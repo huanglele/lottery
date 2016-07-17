@@ -12,18 +12,15 @@ return array(
     //数据库连接信息
     'DB_HOST' => '127.0.0.1',
     'DB_TYPE' => 'mysql',
-    'DB_USER' => 'fzstore',
-    'DB_PWD' => 'fzstore123',
+    'DB_USER' => 'lottery',
+    'DB_PWD' => 'lottery123',
     'DB_PORT' => '3306',
-    'DB_NAME' => 'fzstore',
-    'DB_PREFIX' => 'fz_',
+    'DB_NAME' => 'lottery',
+    'DB_PREFIX' => '',
 
     //设置模板标识符
     'TMPL_L_DELIM' => '<{',
     'TMPL_R_DELIM' => '}>',
-
-    //图片路径
-    'imgHost' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '/../upload/',
 
 
     //文件上传配置
@@ -46,12 +43,20 @@ return array(
     'TMPL_ACTION_SUCCESS' => 'Public:dispatch_jump',
     'TMPL_ACTION_ERROR' => 'Public:dispatch_jump',
 
+
     //比赛结果
     'MatchResult' => array(
-        '0' => '未开始',
-        '1' => '主胜',
-        '2' => '客胜',
-        '3' => '平局',
+        '1' => '未开始',
+        '2' => '待揭晓',
+        '3' => '主胜',
+        '4' => '客胜',
+        '5' => '平局',
+    ),
+
+    //球队类型 应该和比赛类型 保持一致
+    'TeamType' => array(
+        '1' => '篮球队',
+        '2' => '足球队',
     ),
 
     //比赛类型

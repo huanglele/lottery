@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            添加球队
+        </div>
+        <div class="panel panel-body">
+            <form action="<{:U('update')}>" method="post" enctype="multipart/form-data">
+                <!--球队名、球队类型、国家-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">球队名</div>
+                                <input type="text" class="form-control" name="name" placeholder="球队的名字" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">球队类型</div>
+                                <select name="type" class="form-control">
+                                    <volist name="TeamType" id="v">
+                                        <option value="<{$key}>"><{$v}></option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">所属国家</div>
+                                <select name="area" class="form-control">
+                                    <volist name="Country" id="v">
+                                        <option value="<{$key}>"><{$v}></option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--球队图片-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">球队名</div>
+                                <input type="file" class="form-control" id="icon" name="img" placeholder="上传球队旗帜" value="" onchange="javascript:setImagePreview('icon','preview1');" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div id="localImag">
+                            <img id="preview1" width="-1" height="-1" style="display: none" />
+                        </div>
+                    </div>
+                </div>
+                <!--教练、简介-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">教练</div>
+                                <input type="text" class="form-control" name="coach" placeholder="教练的名字" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">简介</div>
+                                <textarea class="form-control" name="desc"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--提交-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <button type="submit" name="submit" value="add" class="btn btn-success btn-block">添加</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setImagePreview(fileid, previewid) {
+        var c, d, e, a = document.getElementById(fileid),b = a.value;
+        if (!b.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"), !1;
+        if (c = document.getElementById(previewid), a.files && a.files[0]) c.style.display = "block", c.style.width = "51px", c.style.height = "34px", c.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(a.files[0]) : window.URL.createObjectURL(a.files[0]);
+        else {
+            a.select(), a.blur(), d = document.selection.createRange().text, e = document.getElementById("localImag"), e.style.width = "63px", e.style.height = "63px";
+            try {
+                e.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)", e.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = d
+            } catch (f) {
+                return alert("您上传的图片格式不正确，请重新选择！"), !1
+            }
+            c.style.display = "none", document.selection.empty()
+        }
+        return document.getElementById("DivUp").style.display = "block", !0
+    }
+</script>

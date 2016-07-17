@@ -1,0 +1,171 @@
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<style>
+    .flag_icon {
+        height: 20px;
+    }
+</style>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            添加比赛
+        </div>
+        <div class="panel panel-body">
+            <form action="<{:U('update')}>" method="post" enctype="multipart/form-data">
+                <!--比赛名称、比赛类型-->
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">赛事名</div>
+                                <input type="text" class="form-control" name="name" placeholder="赛事名" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">比赛类型</div>
+                                <select name="type" class="form-control">
+                                    <volist name="MatchType" id="v">
+                                        <option value="<{$key}>"><{$v}></option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--主客队信息-->
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">主队ID</div>
+                                <input type="text" class="form-control" name="host_id" placeholder="主队ID" value="">
+                                <div class="input-group-addon" id="hostInfo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">客队ID</div>
+                                <input type="text" class="form-control" name="guess_id" placeholder="客队ID" value="">
+                                <div class="input-group-addon" id="guessInfo"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--开始时间、比赛地点-->
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">比赛时间</div>
+                                <input type="text" data-date="yyyy-mm-dd hh:ii:ss" class="form-control form_datetime" name="b_time" placeholder="比赛时间" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">比赛地点</div>
+                                <input name="place" type="text" placeholder="填写比赛地点" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--赔率-->
+                <div class="row">
+                    <div class="col-xs-3 col-xs-offset-1">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">主胜赔率</div>
+                                <input type="text" class="form-control" name="rate[win]" placeholder="主胜赔率" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">平赔率</div>
+                                <input type="text" class="form-control" name="rate[draw]" placeholder="平赔率" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">客胜赔率</div>
+                                <input type="text" class="form-control" name="rate[lose]" placeholder="客胜赔率" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--前台是否显示-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-1">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="is_show" value="1">前台显示(勾选用户才能看到该比赛)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--提交-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-3">
+                        <div class="form-group">
+                            <button type="submit" name="submit" value="add" class="btn btn-success btn-block">添加</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(window).ready(function(){
+        $('select[name="type"]').on('change',function(){
+            $('input[name="host_id"]').val('');
+            $('#hostInfo').html('');
+            $('input[name="guess_id"]').val('');
+            $('#guessInfo').html('');
+        })
+        $('input[name="host_id"]').on('blur',function(){
+            getOneTeamInfo($(this).val(),'host');
+        });
+        $('input[name="guess_id"]').on('blur',function(){
+            getOneTeamInfo($(this).val(),'guess');
+        });
+    })
+
+    function getOneTeamInfo(id,t){
+        var type = $('select[name="type"]').val();
+        $.ajax({
+            'url':"<{:U('team/getOneTeamInfo')}>",
+            'data':{
+                'id':id
+            },
+            'success':function(res){
+                if(res.status){
+                    if(res.type==type){
+                        var html = res.name+'<img src="__ROOT__/upload/'+res.icon+'" class="flag_icon" />';
+                        $('#'+t+'Info').html(html);
+                    }else{
+                        $('input[name="'+t+'_id"]').val('');
+                        alert('球队类型不符合');
+                    }
+                }else{
+                    $('input[name="'+t+'_id"]').val('');
+                    alert('球队不存在');
+                }
+            }
+        })
+    }
+
+</script>
