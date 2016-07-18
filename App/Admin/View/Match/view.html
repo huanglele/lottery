@@ -1,0 +1,222 @@
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<style>
+    .flag_icon {
+        height: 20px;
+    }
+</style>
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            添加比赛
+        </div>
+        <div class="panel panel-body">
+
+            <!--比赛名称、比赛类型-->
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">赛事名</div>
+                            <input type="text" class="form-control must" disabled="disabled" value="<{$info.name}>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">比赛类型</div>
+                            <select name="type" class="form-control" disabled="disabled">
+                                <volist name="MatchType" id="v">
+                                    <option value="<{$key}>"><{$v}></option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--主客队信息-->
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">主队ID</div>
+                            <input type="text" class="form-control must" name='host_id' disabled="disabled" value="<{$info.host_id}>">
+                            <div class="input-group-addon">
+                                <a target="_blank" id="hostInfo" href="<{:U('team/edit')}>?id=<{$info.guess_id}>"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">客队ID</div>
+                            <input type="text" class="form-control must" name="guess_id" disabled="disabled" value="<{$info.guess_id}>">
+                            <div class="input-group-addon">
+                                <a target="_blank" id="guessInfo" href="<{:U('team/edit')}>?id=<{$info.guess_id}>"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--开始时间、比赛地点-->
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">比赛时间</div>
+                            <input type="text" disabled="disabled" class="form-control must form_datetime" name="b_time" value="<{$info.b_time}>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">比赛地点</div>
+                            <input name="place" type="text" disabled="disabled" class="form-control must" value="<{$info.place}>" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--赔率-->
+            <div class="row">
+                <div class="col-xs-3 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">主胜赔率</div>
+                            <input type="text" class="form-control must" name="rate[win]" disabled="disabled" value="<{$info.rate.win}>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">平赔率</div>
+                            <input type="text" class="form-control" name="rate[draw]" disabled="disabled" value="<{$info.rate.draw}>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">客胜赔率</div>
+                            <input type="text" class="form-control must" name="rate[lose]" disabled="disabled" value="<{$info.rate.lose}>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--前台是否显示 、参与总人次-->
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">前台显示</div>
+                            <input type="text" disabled="disabled" class="form-control must" value="<eq name="info.is_show" value="1">是<else />否</eq>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">参与总人次</div>
+                            <input type="text" disabled="disabled" class="form-control must" value="<{$info.times}>" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--结果-->
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">结果</div>
+                            <input type="text" disabled="disabled" class="form-control must" value="<{$MatchResult[$info['result']]}>" />
+                        </div>
+                    </div>
+                </div>
+                <lt name="info.result" value="3">
+                    <form id="setResult" action="<{:U('setResult')}>" method="post">
+                        <div class="col-xs-4 col-xs-offset-1">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">更新</div>
+                                    <select name="result" class="form-control">
+                                        <volist name="MatchResult" id="v">
+                                            <gt name="key" value="$info.result">
+                                                <option name="<{$key}>" ><{$v}></option>
+                                            </gt>
+                                        </volist>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <button type="button" id="btnSend" name="id" class="btn btn-danger btn-block" value="<{$info.id}>">更新</button>
+                            </div>
+                        </div>
+                    </form>
+                </lt>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(window).ready(function(){
+
+        $('select[name="type"]').val('<{$info.type}>');
+        getOneTeamInfo('<{$info.host_id}>','host');
+        getOneTeamInfo('<{$info.guess_id}>','guess');
+
+        $('select[name="type"]').on('change',function(){
+            $('input[name="host_id"]').val('');
+            $('#hostInfo').html('');
+            $('input[name="guess_id"]').val('');
+            $('#guessInfo').html('');
+        })
+
+        //提交表单
+        $('#btnSend').click(function(e){
+            e.preventDefault();
+            if(confirm('确定胜负后不可修改，确定提交？')){
+                $('#setResult').submit();
+                return true;
+            }else{
+                return false;
+            }
+
+        })
+    })
+
+    function getOneTeamInfo(id,t){
+        var type = $('select[name="type"]').val();
+        $.ajax({
+            'url':"<{:U('team/getOneTeamInfo')}>",
+            'data':{
+                'id':id
+            },
+            'success':function(res){
+                if(res.status){
+                    if(res.type==type){
+                        var html = res.name+'<img src="__ROOT__/upload/'+res.icon+'" class="flag_icon" />';
+                        $('#'+t+'Info').html(html);
+                    }else{
+                        $('input[name="'+t+'_id"]').val('');
+                        alertMsg('球队类型不符合');
+                    }
+                }else{
+                    $('input[name="'+t+'_id"]').val('');
+                    alertMsg('球队不存在');
+                }
+            }
+        })
+    }
+
+</script>

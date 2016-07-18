@@ -91,14 +91,14 @@
 <script>
     function setImagePreview(fileid, previewid) {
         var c, d, e, a = document.getElementById(fileid),b = a.value;
-        if (!b.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"), !1;
+        if (!b.match(/.jpg|.gif|.png|.bmp/i)) return alertMsg("您上传的图片格式不正确，请重新选择！"), !1;
         if (c = document.getElementById(previewid), a.files && a.files[0]) c.style.display = "block", c.style.width = "51px", c.style.height = "34px", c.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(a.files[0]) : window.URL.createObjectURL(a.files[0]);
         else {
             a.select(), a.blur(), d = document.selection.createRange().text, e = document.getElementById("localImag"), e.style.width = "63px", e.style.height = "63px";
             try {
                 e.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)", e.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = d
             } catch (f) {
-                return alert("您上传的图片格式不正确，请重新选择！"), !1
+                return alertMsg("您上传的图片格式不正确，请重新选择！"), !1
             }
             c.style.display = "none", document.selection.empty()
         }

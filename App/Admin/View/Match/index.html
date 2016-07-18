@@ -13,6 +13,26 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">是否显示</div>
+                    <select name="is_show" class="form-control">
+                        <option value="-1">全部</option>
+                        <option value="0">不显示</option>
+                        <option value="1">显示</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">赛事名称</div>
+                    <input name="name" class="form-control" value="<{$name}>" />
+                </div>
+            </div>
+        </div>
         <div class="col-xs-2 ">
             <button type="submit" class="btn btn-primary">搜索</button>
         </div>
@@ -32,6 +52,8 @@
                 <th>主队</th>
                 <th>客队</th>
                 <th>类型</th>
+                <th>前台显示</th>
+                <th>开始时间</th>
                 <th>结果</th>
                 <th>操作</th>
             </tr>
@@ -52,8 +74,19 @@
                         <img src="__ROOT__/upload/<{$Teams[$vo['guess_id']]['icon']}>" class="flag_icon" />
                     </td>
                     <td><{$MatchType[$vo['type']]}></td>
+                    <td>
+                        <eq name="vo.is_show" value="1">
+                            显示中<else />不显示
+                        </eq>
+                    </td>
+                    <td>
+                        <{$vo.b_time}>
+                    </td>
                     <td><{$MatchResult[$vo['result']]}></td>
-                    <td><a href="<{:U('edit')}>?id=<{$vo.id}>" >查看</a></td>
+                    <td>
+                        <a href="<{:U('edit')}>?id=<{$vo.id}>" >编辑</a>
+                        <a href="<{:U('view')}>?id=<{$vo.id}>" >查看</a>
+                    </td>
                 </tr>
             </volist>
             </tbody>
@@ -65,5 +98,6 @@
 <script>
     $(window).ready(function(){
         $('select[name="type"]').val('<{$type}>');
+        $('select[name="is_show"]').val('<{$is_show}>');
     })
 </script>

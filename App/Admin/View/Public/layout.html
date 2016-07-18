@@ -45,6 +45,20 @@
     <div class="row">
         <div class="col-xs-3 col-md-3 col-lg-2">
             <div id="mainNav" class="sidebar-nav">
+                <div class="nav-header"><i class="icon-dashboard"></i>用户管理</div>
+                <ul class="nav nav-list collapse in">
+                    <li ><a href="<{:U('User/index')}>">所有用户</a></li>
+                    <li ><a href="<{:U('User/add')}>">添加球队</a></li>
+                </ul>
+
+                <div class="nav-header"><i class="icon-briefcase"></i>信息管理</div>
+                <ul class="nav nav-list collapse in">
+                    <li ><a href="<{:U('Index/wechat')}>">微信信息</a></li>
+                    <li ><a href="<{:U('Index/pwd')}>">修改密码</a></li>
+                    <li ><a href="<{:U('Index/listAdmin')}>">管理员列表</a></li>
+                    <li ><a href="<{:U('Index/addAdmin')}>">添加列表</a></li>
+                </ul>
+
                 <div class="nav-header"><i class="icon-dashboard"></i>球队管理</div>
                 <ul class="nav nav-list collapse in">
                     <li ><a href="<{:U('Team/index')}>">所有球队</a></li>
@@ -52,12 +66,12 @@
                 </ul>
 
 
-                <div class="nav-header"><i class="icon-briefcase"></i>比赛管理<span class="label label-info"></span></div>
+                <div class="nav-header"><i class="icon-briefcase"></i>比赛管理</div>
                 <ul class="nav nav-list collapse in">
                     <li ><a href="<{:U('match/index')}>">所有比赛</a></li>
                     <li ><a href="<{:U('match/add')}>">添加比赛</a></li>
+                    <li ><a href="<{:U('match/record')}>">查看记录</a></li>
                 </ul>
-
 
             </div>
         </div>
@@ -68,38 +82,63 @@
 
     <footer>
         <hr>
-        <!--<p class="pull-right"><a href="tencent://message/?uin=2361547577">联系作者</a></p>-->
+        <p class="pull-right"><a href="tencent://message/?uin=2361547577">联系作者</a></p>
         <p>&copy; 2016</p>
     </footer>
-    <script>
-        $(window).ready(function(){
-
-            //时间控件
-            $('.form_datetime').each(function(){
-                if($(this).attr('data-date')!='undefined'){
-                    var _dateFmt = $(this).attr('data-date');
-                }else{
-                    var _dateFmt = 'yyyy-mm-dd';
-                }
-                $(this).datetimepicker({format: _dateFmt,language:'zh-CN'});
-            });
-
-            //删除确认
-            $('.deleteA').click(function(){
-                if(confirm('确定删除？')){
-                    return true;
-                }else{
-                    return false;
-                }
-            });
-            //导航收缩
-            $('.nav-header',$('#mainNav')).each(function(){
-                $(this).click(function(){
-                    $(this).next().slideToggle('show');
-                })
-            })
-        });
-    </script>
 </div>
+
+<!--alert提示消息-->
+<div id="msgModal" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">提示</h3>
+            </div>
+            <div class="modal-body">
+                <p class="content h4"></p>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+    $(window).ready(function(){
+        msgModal = $('#msgModal');
+        //时间控件
+        $('.form_datetime').each(function(){
+            if($(this).attr('data-date')!='undefined'){
+                var _dateFmt = $(this).attr('data-date');
+            }else{
+                var _dateFmt = 'yyyy-mm-dd';
+            }
+            $(this).datetimepicker({format: _dateFmt,language:'zh-CN'});
+        });
+
+        //删除确认
+        $('.deleteA').click(function(){
+            if(confirm('确定删除？')){
+                return true;
+            }else{
+                return false;
+            }
+        });
+        //导航收缩
+        $('.nav-header',$('#mainNav')).each(function(){
+            $(this).click(function(){
+                $(this).next().slideToggle('show');
+            })
+        })
+    });
+
+    function alertMsg(msg,sec){
+        $('.content',msgModal).html(msg);
+        msgModal.modal('show');
+        if(typeof sec == 'number'){
+            setTimeout(function(){msgModal.modal('hide')},sec*1000);
+        }
+    }
+
+</script>
 </body>
 </html>

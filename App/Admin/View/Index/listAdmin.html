@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            管理员列表
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>管理员ID</th>
+                <th>管理员</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <volist name="list" id="vo">
+                <tr>
+                    <td><{$vo.aid}></td>
+                    <td>
+                        <{$vo.name}>
+                    </td>
+                    <td><a class="deleteA" href="<{:U('delAdmin')}>?id=<{$vo.aid}>" >删除</a></td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+    </div>
+    <div><{$page}></div>
+</div>
