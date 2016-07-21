@@ -2,7 +2,7 @@
 /**
  * Author: huanglele
  * Date: 2016/7/18
- * Time: ÏÂÎç 03:05
+ * Time: ä¸‹åˆ 03:05
  * Description:
  */
 
@@ -28,8 +28,8 @@ function writeConf($k,$v){
 }
 
 /**
- * @param string $timestr ĞèÒª¸ñÊ½»¯µÄÊ±¼ä´Á
- * @return bool|string ¸ñÊ½»¯ºóÊ±¼ä×Ö·û´®
+ * @param string $timestr éœ€è¦æ ¼å¼åŒ–çš„æ—¶é—´æˆ³
+ * @return bool|string æ ¼å¼åŒ–åæ—¶é—´å­—ç¬¦ä¸²
  */
 function Mydate($timestr=''){
     if(''==$timestr){
@@ -45,7 +45,8 @@ function Mydate($timestr=''){
 /**
  * @param $openId
  */
-function getWxUserInfo($openId){
+function getWxUserInfo($openId)
+{
     $access = getWxAccessToken();
     $url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access&openid=$openId&lang=zh_CN";
     $res = myCurl($url);
@@ -55,7 +56,7 @@ function getWxUserInfo($openId){
 
 
 /**
- * @return mixed Î¢ĞÅÆ¾Ö¤
+ * @return mixed å¾®ä¿¡å‡­è¯
  */
 function getWxAccessToken(){
     $Wx = C('Wx');
@@ -71,7 +72,7 @@ function getWxAccessToken(){
 
 function myCurl($url,$data=false){
     $ch = curl_init();
-    //ÉèÖÃ³¬Ê±
+    //è®¾ç½®è¶…æ—¶
     curl_setopt($ch, CURLOPT_TIMEOUT, 6);
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,FALSE);
@@ -82,7 +83,7 @@ function myCurl($url,$data=false){
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-    //ÔËĞĞcurl£¬½á¹ûÒÔjasonĞÎÊ½·µ»Ø
+    //è¿è¡Œcurlï¼Œç»“æœä»¥jasonå½¢å¼è¿”å›
     $res = curl_exec($ch);
     curl_close($ch);
     return $res;

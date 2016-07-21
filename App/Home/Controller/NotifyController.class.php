@@ -110,6 +110,7 @@ class NotifyController extends Controller
                             $wechat->replyText('恭喜你成为本站第'.$uid.'为会员');
                             break;
                         }else{
+                            $this->updateSubStatus($data['FromUserName'],1);
                             $wechat->replyText(C('Wechat.welcome'));
                             break;
                         }
@@ -299,6 +300,41 @@ class NotifyController extends Controller
         }
     }
 
+
+    //生成菜单
+    public function createMean()
+    {
+        /*
+        $b1 = array(
+            'name'=>'久久商城','sub_button'=>array(
+                array('type'=>'view','name'=>'A包产品','url'=>U('index/item',array('id'=>5),true,true)),
+                array('type'=>'view','name'=>'B包产品','url'=>U('index/item',array('id'=>6),true,true)) ,
+                array('type'=>'view','name'=>'C包产品','url'=>U('index/item',array('id'=>7),true,true)) ,
+                array('type'=>'view','name'=>'量子杯垫','url'=>U('index/item',array('id'=>8),true,true)) ,
+                array('type'=>'view','name'=>'量子能量棒','url'=>U('index/item',array('id'=>9),true,true))
+            ));
+        $b2 = array(
+            'name'=>'服务中心','sub_button'=>array(
+                array('type'=>'view','name'=>'个人中心','url'=>U('user/index',array('id'=>5),true,true)),
+                array('type'=>'view','name'=>'我的订购','url'=>U('user/order',array('id'=>6),true,true)),
+                array('type'=>'view','name'=>'订购说明','url'=>U('index/index',array('id'=>7),true,true))
+            ));
+        $b3 = array('type'=>'view','name'=>'量子天地','url'=>'http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIxODM2MDM2Mw==&from=singlemessage&isappinstalled=0#wechat_webview_type=1&wechat_redirect');
+        */
+        $b1 = array('type'=>'view','name'=>'足球','url'=>U('index/type',array('id'=>1),true,true));
+        $b2 = array('type'=>'view','name'=>'篮球','url'=>U('index/type',array('id'=>2),true,true));
+        $b3 = array('type'=>'view','name'=>'个人中心','url'=>U('user/index','',true,true));
+        $b = array('button'=>array($b1,$b2,$b3));
+        $m = json_encode($b,JSON_UNESCAPED_UNICODE);
+        $accsee = getWxAccessToken();
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' . $accsee;
+        $data = array(
+            CURLOPT_POSTFIELDS => $m
+        );
+        echo $m;
+        $r = myCurl($url, $data);
+        var_dump($r);
+    }
 
 
 }

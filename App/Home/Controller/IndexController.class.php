@@ -1,11 +1,23 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
-class IndexController extends Controller {
-    public function index(){
-        $county = C('Country');
-        foreach($county as $k=>$v){
-            echo '\''.($k+1).'\' => \''.$v.'\',<br/>';
+
+class IndexController extends CommonController
+{
+
+    public function index()
+    {
+        var_dump(session('loginJumpUrl'));
+    }
+
+    public function test()
+    {
+        $jump = session('loginJumpUrl');
+        if($jump){
+            header("Location: $jump");
+        }else{
+            echo 'Ã»ÓÐÌø×ª';
         }
     }
+
+
 }
