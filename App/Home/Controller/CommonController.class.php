@@ -26,7 +26,7 @@ class CommonController extends Controller
             } else {
                 //记录url
                 session('loginJumpUrl',$_SERVER['REQUEST_URI']);
-                $this->login();
+                $this->redirect('Common/login');
             }
         }
     }
@@ -78,6 +78,12 @@ class CommonController extends Controller
                 header("Location:$jump");
             }
         }
+    }
+
+    //登出
+    public function logout()
+    {
+        session('uid',null);
     }
 
     public function _empty(){
