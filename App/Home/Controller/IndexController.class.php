@@ -6,7 +6,7 @@ class IndexController extends CommonController
 
     public function index()
     {
-        var_dump(session('loginJumpUrl'));
+        echo $this->uid;
     }
 
     public function test()

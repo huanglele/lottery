@@ -12,7 +12,7 @@ use Think\Controller;
 
 class CommonController extends Controller
 {
-    private $uid = null;
+    protected $uid = null;
 
     //判断登录
     public function _initialize()
@@ -26,6 +26,7 @@ class CommonController extends Controller
             } else {
                 //记录url
                 session('loginJumpUrl',$_SERVER['REQUEST_URI']);
+                $this->login();
             }
         }
     }
