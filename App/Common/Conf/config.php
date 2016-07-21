@@ -22,10 +22,13 @@ return array(
     'TMPL_L_DELIM' => '<{',
     'TMPL_R_DELIM' => '}>',
 
+    //网站名称
+    'SITE_NAME' => '体育竞猜',
+
     //微信参数
     'Wx' => array(
-        'AppID' => 'wxc3d04f676c17c0ba',
-        'AppSecret' => 'b4bf70c90f7975e72d78b7803697e434',
+        'AppID' => 'wxc2b751b051a1c873',
+        'AppSecret' => '31b946e6ffab1208e19bed9c2b8c4063',
         'Token' => 'Z60z6Z6Q1aavK30K0GVv460t30bnA606',       //微信Token(令牌)
         'EncodingAESKey' => 'HdJJKSjx0kqcheREd1zYqJnSy4OCcRHeKdJyj2hECSH',//微信消息加解密密钥
 //        'key' => '123456789012345678901234567890rz',
@@ -36,6 +39,10 @@ return array(
 //        'CURL_PROXY_HOST' => "0.0.0.0",
 //        'CURL_PROXY_PORT' => 0,
 //        'REPORT_LEVENL' => 1,
+    ),
+
+    'Wechat' => array(
+        'welcome' => '点击开始开始吧',
     ),
 
 

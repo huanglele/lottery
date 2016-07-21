@@ -106,21 +106,6 @@ class NotifyController extends Controller
                         if(!$M->where(array('openid'=>$data['FromUserName']))->find()){//判断数库是否添加过该用户
                             //数据库不存在
                             $da = getWxUserInfo($data['FromUserName']);
-                            $up1 = isset($data['EventKey'])?$data['EventKey']:0;
-                            $up2 = 0;
-                            $leader = 0;
-                            if($up1){
-                                $up1 = trim($up1,'qrscene_');
-                                $upInfo = $M->where(array('uid'=>$up1))->field('uid,up1,leader')->find();
-                                if($upInfo){
-                                    $up2 = $upInfo['up1'];
-                                    $leader = $upInfo['leader'];
-                                }
-                            }
-                            $da['up1'] = $up1;
-                            $da['up2'] = $up2;
-                            $da['leader'] = $leader;
-                            $da['vip'] = $da['agent'] = 0;
                             $uid = $M->add($da);
                             $wechat->replyText('恭喜你成为本站第'.$uid.'为会员');
                             break;
@@ -270,7 +255,7 @@ class NotifyController extends Controller
      */
     private function updateSubStatus($openid,$status=0){
         $map['openid'] = $openid;
-        $data['status'] = 0;
+        $data['subscribe'] = $status;
         if($status){
             $data['subscribe_time'] = time();
         }
