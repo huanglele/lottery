@@ -15,7 +15,7 @@ class IndexController extends CommonController
         if($jump){
             header("Location: $jump");
         }else{
-            echo 'Ã»ÓÐÌø×ª';
+            echo 'æ²¡æœ‰è·³è½¬';
         }
     }
 

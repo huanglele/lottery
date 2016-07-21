@@ -2,7 +2,7 @@
 /**
  * Author: huanglele
  * Date: 2016/7/21
- * Time: ÉÏÎç 10:43
+ * Time: ä¸Šåˆ 10:43
  * Description:
  */
 
@@ -14,38 +14,38 @@ class CommonController extends Controller
 {
     private $uid = null;
 
-    //ÅĞ¶ÏµÇÂ¼
+    //åˆ¤æ–­ç™»å½•
     public function _initialize()
     {
         $this->uid =  session('uid');
-        if (!$this->uid){    //ÅĞ¶ÏÃ»ÓĞµÇÂ¼
-           //ÅĞ¶ÏÊÇ·ñÊÇµÇÂ¼²Ù×÷
+        if (!$this->uid){    //åˆ¤æ–­æ²¡æœ‰ç™»å½•
+           //åˆ¤æ–­æ˜¯å¦æ˜¯ç™»å½•æ“ä½œ
             $action = strtolower(ACTION_NAME);
-            if ($action == 'login'){    //µÇÂ¼²Ù×÷
+            if ($action == 'login'){    //ç™»å½•æ“ä½œ
 
             } else {
-                //¼ÇÂ¼url
+                //è®°å½•url
                 session('loginJumpUrl',$_SERVER['REQUEST_URI']);
             }
         }
     }
 
-    //Î¢ĞÅµÇÂ¼
+    //å¾®ä¿¡ç™»å½•
     public function login()
     {
         $tools = new \Org\Wxpay\UserApi();
         $openId = $tools->GetOpenid();
         $wxInfo = $tools->getInfo();
         if(!$wxInfo || isset($wxInfo['errcode'])){
-            $this->error('Î¢ĞÅÊÚÈ¨³ö´í',U('index/index'));
+            $this->error('å¾®ä¿¡æˆæƒå‡ºé”™',U('index/index'));
         }
         $info = getWxUserInfo($openId);
         if(!$info || isset($info['errcode'])){
             var_dump($info);die;
-            $this->error('µÇÂ¼³öÁËµã×´¿ö',U('index/index'));
+            $this->error('ç™»å½•å‡ºäº†ç‚¹çŠ¶å†µ',U('index/index'));
         }
 
-        //ÅĞ¶ÏÖ®Ç°ÊÇ·ñ´æ´¢¹ıÓÃ»§×ÊÁÏ
+        //åˆ¤æ–­ä¹‹å‰æ˜¯å¦å­˜å‚¨è¿‡ç”¨æˆ·èµ„æ–™
         $M = M('user');
         $data = array_merge($info,$wxInfo);
 
@@ -56,7 +56,7 @@ class CommonController extends Controller
         }
         $uInfo = $M->where(array('openid'=>$openId))->field('uid')->find();
         $uid = $uInfo['uid'];
-        $data['last_time'] = time();    //Ğ´Èë×îºóµÇÂ¼Ê±¼ä
+        $data['last_time'] = time();    //å†™å…¥æœ€åç™»å½•æ—¶é—´
         $jump = session('loginJumpUrl');
         if(!$jump){
             $jump = U('index/index');
@@ -68,7 +68,7 @@ class CommonController extends Controller
             session('uid',$uid);
             header("Location:$jump");
         }else{
-            //µÚÒ»´ÎµÇÂ¼ Ìí¼Óµ½ÓÃ»§±íÀïÃæ
+            //ç¬¬ä¸€æ¬¡ç™»å½• æ·»åŠ åˆ°ç”¨æˆ·è¡¨é‡Œé¢
             $data['coin'] =  0;
             $r = $M->add($data);
             if($r){
