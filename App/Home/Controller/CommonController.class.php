@@ -31,8 +31,13 @@ class CommonController extends Controller
         }
     }
 
+    public function login(){
+        $info = M('user')->find();
+        session('uid',$info['id']);
+    }
+
     //微信登录
-    public function login()
+    public function loginWx()
     {
         $tools = new \Org\Wxpay\UserApi();
         $openId = $tools->GetOpenid();

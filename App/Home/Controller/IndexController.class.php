@@ -3,11 +3,12 @@ namespace Home\Controller;
 
 class IndexController extends CommonController
 {
-
+    //显示首页
     public function index()
     {
-        echo $this->uid;
+
     }
+
 
     public function test()
     {
