@@ -264,42 +264,6 @@ class NotifyController extends Controller
     }
 
 
-    /**
-     * 处理文本消息
-     */
-    private function handText($t,$openid){
-        if(!is_numeric($t)){
-            return C('Wechat.welcome');
-        }else{
-            $guessInfo = M('guess')->field('money,uid,tid,result as status')->find($t);
-            if(!$guessInfo){
-                return '无效记录';
-            }
-            $href = U('task/item',array('id'=>$guessInfo['tid']),true,true);
-            if($guessInfo['status']==0){
-                return '<a href="'.$href.'">亲你还没有获取到提示的机会</a>';
-            }elseif($guessInfo['status']==2){
-                return '<a href="'.$href.'">恭喜你猜对了</a>';
-            }
-            $uid = M('user')->where(array('openid'=>$openid))->getField('uid');
-            if($guessInfo['uid']!=$uid){
-                //不是该用户的记录
-                return '想要更多的提示吗？<a href="'.$href.'">快来玩吧</a>';
-            }
-            $taskInfo = M('task')->field('name,real_price as money')->find($guessInfo['tid']);
-            if($taskInfo['money']){
-                if($taskInfo['money']>$guessInfo['money']){
-                    $tip = '低于设置的价格。';
-                }else{
-                    $tip = '高于设置的价格。';
-                }
-                return '您本次竞猜(<a href="'.$href.'">'.$taskInfo['name'].'</a>)的价格是'.$guessInfo['money'].'。'.$tip;
-            }else{
-                return '没有更多的提示。<a href="'.$href.'">快来玩吧</a>';
-            }
-        }
-    }
-
 
     //生成菜单
     public function createMean()

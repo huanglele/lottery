@@ -55,7 +55,7 @@ class CommonController extends Controller
         if(isset($data['headimgurl'])){
             $data['headimgurl'] = trim($data['headimgurl'],'0').'64';
         }
-        $uInfo = $M->where(array('openid'=>$openId))->field('uid')->find();
+        $uInfo = $M->where(array('openid'=>$openId))->field('id')->find();
         $uid = $uInfo['uid'];
         $data['last_time'] = time();    //写入最后登录时间
         $jump = session('loginJumpUrl');
@@ -64,7 +64,7 @@ class CommonController extends Controller
         }
         session('loginJumpUrl',null);
         if($uid){
-            $data['uid'] = $uid;
+            $data['id'] = $uid;
             M('user')->save($data);
             session('uid',$uid);
             header("Location:$jump");
