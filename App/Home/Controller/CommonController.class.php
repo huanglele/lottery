@@ -79,4 +79,8 @@ class CommonController extends Controller
         }
     }
 
+    public function _empty(){
+        $this->index();
+    }
+
 }
