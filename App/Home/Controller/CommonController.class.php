@@ -33,6 +33,8 @@ class CommonController extends Controller
 
     public function login(){
         $info = M('user')->find();
+        session('headimgurl',$info['headimgurl']);
+        session('coin',$info['coin']);
         session('uid',$info['id']);
     }
 
@@ -93,6 +95,11 @@ class CommonController extends Controller
 
     public function _empty(){
         $this->index();
+    }
+
+    //下注球赛
+    public function buyBall(){
+        var_dump($_POST);
     }
 
 }
