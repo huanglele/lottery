@@ -1072,12 +1072,11 @@ body {
 
 .virtual-team__right .virtual-team-name {
     padding-left: .36rem
-}</style>
-   </div>
-     <div data-reactid=".d.2">
-<style type="text/css">.basketball.cpm-main-nav .hd {
-                           height: 2.24rem
-                       }
+}
+
+.basketball.cpm-main-nav .hd {
+    height: 2.24rem
+}
 
 .basketball .m_load {
     background: url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/bg_loading__basketball.jpg?v=1468584850691) 0 0 no-repeat;
@@ -3845,10 +3844,8 @@ body {
 
 .main .text-red {
     color: #ff7962
-}</style>
-   </div>
-     <div data-reactid=".d.3">
-<style>.cpm-fixed-btn_ozb {
+}
+.cpm-fixed-btn_ozb {
      width: .54rem;
      bottom: .56rem;
      right: auto;

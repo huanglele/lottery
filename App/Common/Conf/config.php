@@ -67,13 +67,20 @@ return array(
     'TMPL_ACTION_ERROR' => 'Public:dispatch_jump',
 
 
-    //比赛结果
+    //比赛结果, MatchRecord
     'MatchResult' => array(
-        '1' => '未开始',
+        '1' => '下注中',
         '2' => '待揭晓',
         '3' => '主胜',
         '4' => '客胜',
         '5' => '平局',
+    ),
+
+    //比赛下注项
+    'MatchRecordOption' => array(
+        'win' => 3,
+        'draw' => 4,
+        'lose' => 5,
     ),
 
     //球队类型 应该和比赛类型 保持一致

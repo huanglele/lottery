@@ -93,13 +93,26 @@ class CommonController extends Controller
         session('uid',null);
     }
 
+    //拉取数据
+    public function getData($table, $map, $order, $field = false)
+    {
+        $M = M($table);
+        $count = $M->where($map)->count();
+        $Page = new\Think\Page($count, 25);
+        $show = $Page->show();
+        if ($field) {
+            $list = $M->where($map)->field($field)->order($order)->limit($Page->firstRow, $Page->listRows)->select();
+        } else {
+            $list = $M->where($map)->order($order)->limit($Page->firstRow, $Page->listRows)->select();
+        }
+        $this->assign('list', $list);
+        $this->assign('page', $show);
+        return $list;
+    }
+
     public function _empty(){
         $this->index();
     }
 
-    //下注球赛
-    public function buyBall(){
-        var_dump($_POST);
-    }
 
 }

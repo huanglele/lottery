@@ -1,1 +1,704 @@
-body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,select,th,td{margin:0;padding:0}body{background:#f8f9fa;font:14px/1.5 "Microsoft YaHei",Helvetica,sans-serif;color:#666;-webkit-text-size-adjust:100%!important}button,input,textarea,select{font-size:100%;font-family:inherit;color:inherit;-webkit-appearance:none;appearance:none}select::-ms-expand{display:none}select:focus,select:active{background-color:transparent}input[type=text]::-ms-clear,input[type=tel]::-ms-clear,input[type=number]::-ms-clear{display:none}body,a,img,label,button,input,textarea,select{outline:none;-webkit-tap-highlight-color:transparent}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}input::-webkit-input-placeholder{color:#9a9a9a}h1,h2,h3,h4,h5,h6,strong,b{font-weight:400}ul,ol{list-style:none}table{border-collapse:collapse;border-spacing:0}img{border:none}a{color:#00a5e0;text-decoration:none}a,img{-webkit-touch-callout:none;-webkit-user-select:none}html,body{min-height:100%;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;-webkit-touch-callout:none;-webkit-user-select:none;overflow-scrolling:touch}figure,article,header,nav,section,footer{display:block}.cpm-main-nav{position:relative;z-index:10;width:100%;height:44px}.cpm-main-nav .bd{position:fixed;width:100%;background:#fff;display:-webkit-box;display:-webkit-flex;display:flex}.cpm-main-nav .bd:after{content:"";position:absolute;background:#ddd;bottom:0;right:0;left:0;height:1px;-webkit-transform:scaleY(.5);-webkit-transform-origin:0 bottom}.cpm-main-nav a{position:relative;z-index:1;display:block;width:100%;padding:10px 0;text-align:center;color:#666;font-size:16px;-webkit-box-flex:1;-webkit-flex:1;flex:1}.cpm-main-nav a:after{content:"";position:absolute;background:#ddd;top:15px;bottom:15px;right:0;width:1px;-webkit-transform:scaleX(.5);-webkit-transform-origin:right 0}.cpm-main-nav a:last-child:after{display:none}.cpm-main-nav .active{color:#00a5e0}.cpm-main-nav .active:before{content:"";position:absolute;left:0;right:0;bottom:0;width:100%;height:2px;background:#00a5e0}@-webkit-keyframes dialogLoading{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.cpm-black{color:#000!important}.cpm-light-black{color:#333!important}.cpm-gray{color:#a6a6a6!important}.cpm-red{color:#fc4226!important}.cpm-blue{color:#00a5e0!important}.cpm-orange{color:#f70!important}.cpm-green{color:#389e00!important}.cpm-hide,.cpm-none{display:none!important}.cpm-fixed{position:fixed;width:100%;z-index:96}.cpm-fixed-b{left:0;right:0;bottom:0}.cpm-fixed-t{left:0;right:0;top:0;z-index:98}.cpm-mask{position:fixed;top:0;right:0;bottom:0;left:0;z-index:96;width:100%;height:100%;background:rgba(0,0,0,.8)}.cpm-dialog-mod{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-backface-visibility:hidden;backface-visibility:hidden;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;-webkit-box-orient:vertical;-webkit-box-pack:center;-webkit-box-align:center;-ms-flex-direction:column;-ms-flex-pack:center;-ms-flex-align:center}.cpm-dialog-mod .dialog-ft{clear:both;overflow:hidden}.cpm-dialog-mod .btn-group{padding:10px 5px;display:-webkit-box;display:-webkit-flex;display:flex}.cpm-dialog-mod .btn-confirm,.cpm-dialog-mod .btn-cancel{display:block;width:100%;height:40px;padding:8px 0;margin:0 5px;border:1px solid;border-radius:3px;font-size:16px;line-height:22px;text-align:center;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;-webkit-box-flex:1;-webkit-flex:1;flex:1}.cpm-dialog-mod .btn-confirm{border-color:#0baae4;color:#fff;background:#1fbaf3;-webkit-transform:translateZ(0);transform:translateZ(0)}.cpm-dialog-mod .btn-confirm:active{background:#1ca7da}.cpm-dialog-mod .btn-cancel{border-color:#cacccd;color:#00a5e0;background:#fff;-webkit-transform:translateZ(0);transform:translateZ(0)}.cpm-dialog-mod .btn-cancel:active{background:#f2f2f2}.cpm-dialog-share{position:absolute;z-index:100;top:10px;right:10px;min-width:0;margin:0;background:none}.cpm-dialog-share .txt-share{display:block;width:210px;height:140px;background:url(//static.gtimg.com/vd/lottery/v2/global/img/mqq_cp_share_tips@2x.png) no-repeat;-webkit-background-size:210px auto;background-size:210px auto}.m-share-sns{position:fixed;z-index:200;right:0;bottom:0;left:0;top:0;background-color:rgba(0,0,0,.7)}.m-share-tips{position:absolute;top:10px;right:10px;width:210px;height:140px;background:url(//static.gtimg.com/vd/lottery/v2/global/img/mqq_cp_share_tips@2x.png) no-repeat;-webkit-background-size:100% 100%;background-size:100%}.cpm-dialog{-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-backface-visibility:hidden;backface-visibility:hidden}.cpm-dialog-info{position:relative;z-index:100;min-width:300px;margin:4px 10px;background:#fff;color:#666;text-align:center;border-radius:5px}.cpm-dialog-info .dialog-bd{padding:10px}.cpm-dialog-info .cpm-status-info{padding:30px 0 20px;font-size:18px;text-align:center;color:#333;word-break:break-all;word-wrap:break-word}.cpm-dialog-info .cpm-i-lg{margin-right:10px;vertical-align:-16px}.cpm-dialog-info .cpm-i-sm{margin-right:10px;vertical-align:-4px}.cpm-dialog .cpm-i-suc{position:relative;display:inline-block;background:#41bd73;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-dialog .cpm-i-suc:before{content:"";position:absolute;top:50%;left:50%;background:url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat}.cpm-dialog .cpm-i-suc.cpm-i-lg{width:50px;height:50px;border:2px solid #2aaa81;border-radius:50px}.cpm-dialog .cpm-i-suc.cpm-i-lg:before{width:28px;height:28px;margin:-14px 0 0 -14px;background-position:0 0;-webkit-background-size:28px auto;background-size:28px auto}.cpm-dialog .cpm-i-fail{position:relative;display:inline-block;background:#e63629;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-dialog .cpm-i-fail:before{content:"";position:absolute;top:50%;left:50%;background:url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat}.cpm-dialog .cpm-i-fail.cpm-i-lg{width:50px;height:50px;border:2px solid #cb1a0d;border-radius:50px}.cpm-dialog .cpm-i-fail.cpm-i-lg:before{width:28px;height:28px;margin:-14px 0 0 -14px;background-position:0 -28px;-webkit-background-size:28px auto;background-size:28px auto}.cpm-dialog .cpm-i-error{position:relative;display:inline-block;background:#e63629;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-dialog .cpm-i-error:before{content:"";position:absolute;top:50%;left:50%;background:url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat}.cpm-dialog .cpm-i-error.cpm-i-lg{width:50px;height:50px;border:2px solid #cb1a0d;border-radius:50px}.cpm-dialog .cpm-i-error.cpm-i-lg:before{width:28px;height:28px;margin:-14px 0 0 -14px;background-position:0 -56px;-webkit-background-size:28px auto;background-size:28px auto}.cpm-dialog .cpm-i-info{position:relative;display:inline-block;background:#1fbaf3;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-dialog .cpm-i-info:before{content:"";position:absolute;top:50%;left:50%;background:url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat}.cpm-dialog .cpm-i-info.cpm-i-lg{width:50px;height:50px;border:2px solid #1fa4d6;border-radius:50px}.cpm-dialog .cpm-i-info.cpm-i-lg:before{width:28px;height:28px;margin:-14px 0 0 -14px;background-position:0 -84px;-webkit-background-size:28px auto;background-size:28px auto}.cpm-dialog .i-delete{position:absolute;top:4px;right:4px;width:32px;height:32px}.cpm-dialog .i-delete:before{content:"";position:absolute;top:50%;left:50%;width:20px;height:20px;margin:-10px 0 0 -10px;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/mqq_i_dialog@2x.png) no-repeat 0 -64px;-webkit-background-size:64px auto;background-size:64px auto}.cpm-alert{padding:8px 0;margin:0 10px;background:rgba(0,0,0,.6);text-align:center;color:#fff;line-height:20px;border-radius:0 0 3px 3px}.cpm-alert .cpm-icon-alert{position:relative;display:inline-block;width:16px;height:16px;margin-right:8px;border:1px solid #fff;border-radius:14px;vertical-align:-3px;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-alert .cpm-icon-alert:before,.cpm-alert .cpm-icon-alert:after{content:"";position:absolute;left:6px;width:2px;background:#fff;border-radius:2px}.cpm-alert .cpm-icon-alert:before{top:2px;height:7px}.cpm-alert .cpm-icon-alert:after{top:10px;height:2px}.cpm-bubble{padding:8px 0;margin:0 10px;background:rgba(0,0,0,.6);text-align:center;color:#fff;line-height:20px;border-radius:0 0 3px 3px}.cpm-bubble-mod{position:fixed;top:0;right:0;bottom:0;left:0;z-index:102}.cpm-bubble .i-bubble{position:relative;display:inline-block;width:16px;height:16px;margin-right:8px;background:none;border:1px solid #fff;border-radius:14px;vertical-align:-3px;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-bubble .i-bubble:before,.cpm-bubble .i-bubble:after{content:"";position:absolute;left:6px;width:2px;background:#fff;border-radius:2px}.cpm-bubble .i-bubble:before{top:2px;height:7px}.cpm-bubble .i-bubble:after{top:10px;height:2px}.cpm-loading-mod .cpm-mask{background:transparent}.cpm-load-icon{position:fixed;z-index:100;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/mqq_i_dialog@2x.png) no-repeat;-webkit-background-size:32px auto;background-size:32px auto;-webkit-animation:dialogLoading 1s linear infinite}.m-loading{min-width:170px;padding:45px 15px;border-radius:5px;text-align:center;color:#fff}.m-loading-mod{position:fixed;top:0;right:0;bottom:0;left:0;z-index:110;background:transparent;display:-webkit-box;display:-ms-flexbox;-webkit-box-orient:vertical;-webkit-box-pack:center;-webkit-box-align:center;-ms-flex-direction:column;-ms-flex-pack:center;-ms-flex-align:center}.m-loading p{display:none}.m-loading .i-loading{display:inline-block;height:32px;width:32px;vertical-align:top;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/mqq_i_dialog@2x.png) no-repeat;-webkit-background-size:32px auto;background-size:32px auto;-webkit-animation:dialogLoading 1s linear infinite;animation:dialogLoading 1s linear infinite}.cpm-filter-blur{-webkit-filter:blur(2px)}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, select, th, td {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    background: #f8f9fa;
+    font: 14px/1.5 "Microsoft YaHei", Helvetica, sans-serif;
+    color: #666;
+    -webkit-text-size-adjust: 100% !important
+}
+
+button, input, textarea, select {
+    font-size: 100%;
+    font-family: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+select::-ms-expand {
+    display: none
+}
+
+select:focus, select:active {
+    background-color: transparent
+}
+
+input[type=text]::-ms-clear, input[type=tel]::-ms-clear, input[type=number]::-ms-clear {
+    display: none
+}
+
+body, a, img, label, button, input, textarea, select {
+    outline: none;
+    -webkit-tap-highlight-color: transparent
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none
+}
+
+input::-webkit-input-placeholder {
+    color: #9a9a9a
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+    font-weight: 400
+}
+
+ul, ol {
+    list-style: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+img {
+    border: none
+}
+
+a {
+    color: #00a5e0;
+    text-decoration: none
+}
+
+a, img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none
+}
+
+html, body {
+    min-height: 100%;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    overflow-scrolling: touch
+}
+
+figure, article, header, nav, section, footer {
+    display: block
+}
+
+.cpm-main-nav {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 44px
+}
+
+.cpm-main-nav .bd {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
+}
+
+.cpm-main-nav .bd:after {
+    content: "";
+    position: absolute;
+    background: #ddd;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    -webkit-transform: scaleY(.5);
+    -webkit-transform-origin: 0 bottom
+}
+
+.cpm-main-nav a {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1
+}
+
+.cpm-main-nav a:after {
+    content: "";
+    position: absolute;
+    background: #ddd;
+    top: 15px;
+    bottom: 15px;
+    right: 0;
+    width: 1px;
+    -webkit-transform: scaleX(.5);
+    -webkit-transform-origin: right 0
+}
+
+.cpm-main-nav a:last-child:after {
+    display: none
+}
+
+.cpm-main-nav .active {
+    color: #00a5e0
+}
+
+.cpm-main-nav .active:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #00a5e0
+}
+
+@-webkit-keyframes dialogLoading {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+.cpm-black {
+    color: #000 !important
+}
+
+.cpm-light-black {
+    color: #333 !important
+}
+
+.cpm-gray {
+    color: #a6a6a6 !important
+}
+
+.cpm-red {
+    color: #fc4226 !important
+}
+
+.cpm-blue {
+    color: #00a5e0 !important
+}
+
+.cpm-orange {
+    color: #f70 !important
+}
+
+.cpm-green {
+    color: #389e00 !important
+}
+
+.cpm-hide, .cpm-none {
+    display: none !important
+}
+
+.cpm-fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 96
+}
+
+.cpm-fixed-b {
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.cpm-fixed-t {
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 98
+}
+
+.cpm-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 96;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8)
+}
+
+.cpm-dialog-mod {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-direction: column;
+    -ms-flex-pack: center;
+    -ms-flex-align: center
+}
+
+.cpm-dialog-mod .dialog-ft {
+    clear: both;
+    overflow: hidden
+}
+
+.cpm-dialog-mod .btn-group {
+    padding: 10px 5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
+}
+
+.cpm-dialog-mod .btn-confirm, .cpm-dialog-mod .btn-cancel {
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 8px 0;
+    margin: 0 5px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1
+}
+
+.cpm-dialog-mod .btn-confirm {
+    border-color: #0baae4;
+    color: #fff;
+    background: #1fbaf3;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+}
+
+.cpm-dialog-mod .btn-confirm:active {
+    background: #1ca7da
+}
+
+.cpm-dialog-mod .btn-cancel {
+    border-color: #cacccd;
+    color: #00a5e0;
+    background: #fff;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+}
+
+.cpm-dialog-mod .btn-cancel:active {
+    background: #f2f2f2
+}
+
+.cpm-dialog-share {
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    right: 10px;
+    min-width: 0;
+    margin: 0;
+    background: none
+}
+
+.cpm-dialog-share .txt-share {
+    display: block;
+    width: 210px;
+    height: 140px;
+    background: url(//static.gtimg.com/vd/lottery/v2/global/img/mqq_cp_share_tips@2x.png) no-repeat;
+    -webkit-background-size: 210px auto;
+    background-size: 210px auto
+}
+
+.m-share-sns {
+    position: fixed;
+    z-index: 200;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .7)
+}
+
+.m-share-tips {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 210px;
+    height: 140px;
+    background: url(//static.gtimg.com/vd/lottery/v2/global/img/mqq_cp_share_tips@2x.png) no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100%
+}
+
+.cpm-dialog {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden
+}
+
+.cpm-dialog-info {
+    position: relative;
+    z-index: 100;
+    min-width: 300px;
+    margin: 4px 10px;
+    background: #fff;
+    color: #666;
+    text-align: center;
+    border-radius: 5px
+}
+
+.cpm-dialog-info .dialog-bd {
+    padding: 10px
+}
+
+.cpm-dialog-info .cpm-status-info {
+    padding: 30px 0 20px;
+    font-size: 18px;
+    text-align: center;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word
+}
+
+.cpm-dialog-info .cpm-i-lg {
+    margin-right: 10px;
+    vertical-align: -16px
+}
+
+.cpm-dialog-info .cpm-i-sm {
+    margin-right: 10px;
+    vertical-align: -4px
+}
+
+.cpm-dialog .cpm-i-suc {
+    position: relative;
+    display: inline-block;
+    background: #41bd73;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.cpm-dialog .cpm-i-suc:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat
+}
+
+.cpm-dialog .cpm-i-suc.cpm-i-lg {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #2aaa81;
+    border-radius: 50px
+}
+
+.cpm-dialog .cpm-i-suc.cpm-i-lg:before {
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    background-position: 0 0;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto
+}
+
+.cpm-dialog .cpm-i-fail {
+    position: relative;
+    display: inline-block;
+    background: #e63629;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.cpm-dialog .cpm-i-fail:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat
+}
+
+.cpm-dialog .cpm-i-fail.cpm-i-lg {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #cb1a0d;
+    border-radius: 50px
+}
+
+.cpm-dialog .cpm-i-fail.cpm-i-lg:before {
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    background-position: 0 -28px;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto
+}
+
+.cpm-dialog .cpm-i-error {
+    position: relative;
+    display: inline-block;
+    background: #e63629;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.cpm-dialog .cpm-i-error:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat
+}
+
+.cpm-dialog .cpm-i-error.cpm-i-lg {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #cb1a0d;
+    border-radius: 50px
+}
+
+.cpm-dialog .cpm-i-error.cpm-i-lg:before {
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    background-position: 0 -56px;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto
+}
+
+.cpm-dialog .cpm-i-info {
+    position: relative;
+    display: inline-block;
+    background: #1fbaf3;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.cpm-dialog .cpm-i-info:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: url(//static.gtimg.com/vd/lottery/v2/global/img/cpm_i_status@2x.png) no-repeat
+}
+
+.cpm-dialog .cpm-i-info.cpm-i-lg {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #1fa4d6;
+    border-radius: 50px
+}
+
+.cpm-dialog .cpm-i-info.cpm-i-lg:before {
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    background-position: 0 -84px;
+    -webkit-background-size: 28px auto;
+    background-size: 28px auto
+}
+
+.cpm-dialog .i-delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 32px;
+    height: 32px
+}
+
+.cpm-dialog .i-delete:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    background: url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/mqq_i_dialog@2x.png) no-repeat 0 -64px;
+    -webkit-background-size: 64px auto;
+    background-size: 64px auto
+}
+
+.cpm-alert {
+    padding: 8px 0;
+    margin: 0 10px;
+    background: rgba(0, 0, 0, .6);
+    text-align: center;
+    color: #fff;
+    line-height: 20px;
+    border-radius: 0 0 3px 3px
+}
+
+.cpm-alert .cpm-icon-alert {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border: 1px solid #fff;
+    border-radius: 14px;
+    vertical-align: -3px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.cpm-alert .cpm-icon-alert:before, .cpm-alert .cpm-icon-alert:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    width: 2px;
+    background: #fff;
+    border-radius: 2px
+}
+
+.cpm-alert .cpm-icon-alert:before {
+    top: 2px;
+    height: 7px
+}
+
+.cpm-alert .cpm-icon-alert:after {
+    top: 10px;
+    height: 2px
+}
+
+.cpm-bubble {
+    padding: 8px 0;
+    margin: 0 10px;
+    background: rgba(0, 0, 0, .6);
+    text-align: center;
+    color: #fff;
+    line-height: 20px;
+    border-radius: 0 0 3px 3px
+}
+
+.cpm-bubble-mod {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 102
+}
+
+.cpm-bubble .i-bubble {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 14px;
+    vertical-align: -3px;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.cpm-bubble .i-bubble:before, .cpm-bubble .i-bubble:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    width: 2px;
+    background: #fff;
+    border-radius: 2px
+}
+
+.cpm-bubble .i-bubble:before {
+    top: 2px;
+    height: 7px
+}
+
+.cpm-bubble .i-bubble:after {
+    top: 10px;
+    height: 2px
+}
+
+.cpm-loading-mod .cpm-mask {
+    background: transparent
+}
+
+.cpm-load-icon {
+    position: fixed;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    background: url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/mqq_i_dialog@2x.png) no-repeat;
+    -webkit-background-size: 32px auto;
+    background-size: 32px auto;
+    -webkit-animation: dialogLoading 1s linear infinite
+}
+
+.m-loading {
+    min-width: 170px;
+    padding: 45px 15px;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff
+}
+
+.m-loading-mod {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 110;
+    background: rgba(54, 60, 80, 0.5);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-direction: column;
+    -ms-flex-pack: center;
+    -ms-flex-align: center
+}
+
+.m-loading p {
+    /*display: none*/
+}
+
+.m-loading .i-loading {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    vertical-align: top;
+    background: url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/mqq_i_dialog@2x.png) no-repeat;
+    -webkit-background-size: 32px auto;
+    background-size: 32px auto;
+    -webkit-animation: dialogLoading 1s linear infinite;
+    animation: dialogLoading 1s linear infinite
+}
+
+.cpm-filter-blur {
+    -webkit-filter: blur(2px)
+}
