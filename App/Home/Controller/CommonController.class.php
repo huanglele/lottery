@@ -100,7 +100,7 @@ class CommonController extends Controller
     {
         $M = M($table);
         $count = $M->where($map)->count();
-        $Page = new\Think\Page($count, 25);
+        $Page = new\Think\Page($count, 10);
         $show = $Page->show();
         if ($field) {
             $list = $M->where($map)->field($field)->order($order)->limit($Page->firstRow, $Page->listRows)->select();

@@ -13,11 +13,26 @@ class BallBaseController extends CommonController
 {
 
 
-
-    public function getMatchList($ord)
+    //前台ajax拉取比赛列表数据 默认从第二页开始拉取
+    public function getMatchList()
     {
-        $list = M('match')->order('times desc')->where(array('is_show'=>1,'result'=>array('in',array(1,2))))->limit(5)->select();
-
+        $p = I('p',2,'number_int');
+        $type = I('get.type');
+        $map['is_show'] = 1;
+        $map['type'] = $type;   //拉取篮球
+        $ac = I('get.ac');
+        if($ac=='finish'){  //已结束下注的
+            $map['result'] = array('gt',2);
+        }
+        $list = $this->getData('match',$map,'b_time desc');
+        $data = $this->mergeMatchInfo($list);
+        $num = count($data);
+        $ret['status'] = 'success';
+        $ret['num'] = $num;
+        $ret['list'] = $data;
+        if($num==10)  $p++;
+        $ret['page'] = $p;
+        $this->ajaxReturn($ret);
     }
 
     /**
@@ -114,6 +129,42 @@ class BallBaseController extends CommonController
             $res['msg'] = '下注项错误';
         }
         $this->ajaxReturn($res);
+    }
+
+    //获取比赛竞猜记录
+    public function getMatchRecordList(){
+        $p = I('get.p');
+        $mid = I('get.id');
+        $map['mid'] = $mid;
+        $list = $this->getData('match_record',$map,'id desc');
+        $data = $this->mergeMatchRecordInfo($list);
+        $num = count($data);
+        $ret['status'] = 'success';
+        $ret['num'] = $num;
+        $ret['list'] = $data;
+        if($num==10)  $p++;
+        $ret['page'] = $p;
+        $this->ajaxReturn($ret);
+    }
+
+    protected function mergeMatchRecordInfo($list){
+        $data = array();
+        if(count($list)){
+            $uidArr = array();
+            foreach($list as $v){
+                $uidArr[] = $v['uid'];
+            }
+            $userInfo = M('user')->where(array('id'=>array('in',$uidArr)))->getField('id,nickname,headimgurl');
+            $Result = C('MatchResult');
+            foreach($list as $v){
+                $i = $v;
+                $i['nickname'] = $userInfo[$v['uid']]['nickname'];
+                $i['headimgurl'] = $userInfo[$v['uid']]['headimgurl'];
+                $i['option'] = $Result[$v['option']];
+                $data[] = $i;
+            }
+        }
+        return $data;
     }
 
 }
