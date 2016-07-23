@@ -171,7 +171,7 @@ body {
 
 .cpm-main-nav .hd {
     position: relative;
-    height: 2.18rem
+    height: 1.75rem;
 }
 
 .cpm-main-nav .bd {
@@ -2663,7 +2663,9 @@ body {
 }
 
 .mod__finished .game-state {
-    color: #5d6582
+    color: #5d6582;
+    width: .2rem;
+    margin-left: 0.15rem;
 }
 
 .mod__finished .team-name {

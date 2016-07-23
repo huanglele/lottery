@@ -35,6 +35,7 @@ class CommonController extends Controller
         $info = M('user')->find();
         session('headimgurl',$info['headimgurl']);
         session('coin',$info['coin']);
+        session('nickname',$info['nickname']);
         session('uid',$info['id']);
     }
 
@@ -58,6 +59,8 @@ class CommonController extends Controller
         $data = array_merge($info,$wxInfo);
 
         session('openid',$openId);
+        session('headimgurl',$data['headimgurl']);
+        session('nickname',$data['nickname']);
 
         if(isset($data['headimgurl'])){
             $data['headimgurl'] = trim($data['headimgurl'],'0').'64';
@@ -81,7 +84,6 @@ class CommonController extends Controller
             $r = $M->add($data);
             if($r){
                 session('uid',$r);
-                session('agent',0);
                 header("Location:$jump");
             }
         }
