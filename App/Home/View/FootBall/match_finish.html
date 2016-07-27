@@ -1,10 +1,590 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" style="font-size:120px;">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <title>足球·彩票</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
+    <!--<link href="__PUBLIC__/css/football.css" rel="stylesheet"/>-->
+    <link href="__PUBLIC__/css/sportcenter.css" rel="stylesheet"/>
+    <script src="__PUBLIC__/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <style>
+        .match_result{
+            background-color: #5a627e;
+            color: #ddd;
+            font-size: .14rem;
+            width: 90%;
+            border: none;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: .34rem;
+            line-height: .34rem;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+<div class="cpm-content" style="visibility: visible;">
+    <div class="m-loading-mod" id="loading2" style="display: none;">
+        <div class="m-loading">
+            <i class="i-loading"></i>
+        </div>
+    </div>
+    <style type="text/css">.game-recommend_hd{color:#6b7698;font-size:.12rem;position:relative;display:inline-block;padding:.03rem 0}.game-recommend_hd:before,.game-recommend_hd:after{content:"";position:absolute;top:0;bottom:0;margin:auto;width:.47rem;height:1px;background-color:#5b6484}.game-recommend_hd:before{left:.8rem}.game-recommend_hd:after{right:.8rem}.game-recommend_bd{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;padding-bottom:.1rem}.game-recommend_bd .recomm-team{-webkit-box-flex:1;-webkit-flex:1;flex:1;color:#cedaff;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;border:.02rem solid #616b8d;border-radius:.2rem;margin:.04rem auto;padding:0 .05rem;-webkit-box-sizing:border-box;box-sizing:border-box}.game-recommend_bd .recomm-team_item{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;height:.28rem}.game-recommend_bd .recomm-team_item:last-child{-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-webkit-flex-direction:row-reverse;flex-direction:row-reverse}.game-recommend_bd .team-logo{width:.18rem;height:.18rem;margin:0 .06rem}.game-recommend_bd .team-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:.9rem}.game-recommend_bd .team-title__vs{min-width:.24rem}html{font-size:100px}body{font-size:.14rem;background-color:#252834}.cpm-main-nav{width:100%;height:auto;background-color:#282d3c}.cpm-main-nav .hd{position:relative;}.cpm-main-nav .bd{position:relative;background-color:#282d3c;height:.35rem}.cpm-main-nav .bd:after{-webkit-transform:scale(1);transform:scale(1);background-color:#282d3c;height:.01rem}.cpm-main-nav a{font-size:.14rem;line-height:.34rem;color:#6f799a;padding:0}.cpm-main-nav a:after{display:none}.cpm-main-nav span{display:inline-block;position:relative}.cpm-main-nav span:after{content:"";position:absolute;bottom:0;left:0;right:0;margin:auto;height:.02rem;width:100%;-webkit-transform-origin:50% 50%;transform-origin:50% 50%}.cpm-main-nav .active{color:#657de3}.cpm-main-nav .active:before{display:none}.cpm-main-nav .active span:after{background-color:#495aa4;-webkit-transform:scale(1.6,1);transform:scale(1.6,1)}.cpm-main-nav .m_load{position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/bg_loading.jpg?v=1461415188508) no-repeat;-webkit-background-size:cover;background-size:cover;text-align:center;color:#fff;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.cpm-main-nav .m_load:before{content:"";position:absolute;z-index:0;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.5)}.cpm-main-nav .m_load .txt{position:relative;z-index:1;display:block}.cpm-main-nav .cpm-odds-list{overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-transition:-webkit-transform .2s;transition:transform .2s;width:100%;position:relative;border-bottom:1px solid #222}.cpm-main-nav .cpm-odds-list:last-child{border-bottom:0}.cpm-main-nav .team-logo{overflow:hidden;-webkit-box-sizing:border-box;box-sizing:border-box;width:.4rem;height:.4rem;border-radius:100px;margin:auto}.cpm-main-nav .team-logo img{max-width:100%;width:100%;height:100%;vertical-align:top;-webkit-background-clip:padding-box;background-clip:padding-box;background-color:transparent;text-indent:-999px}.cpm-main-nav .cpm-list-item{text-align:center;background-color:#313131;padding:.14rem 0;color:#bcbcbc;position:relative}.cpm-main-nav .cpm-list-item_status{position:absolute;top:0;left:0;width:.4rem;height:.41rem}.cpm-main-nav .cpm-list-item_status:before{content:"";position:absolute;top:0;left:0;border-left:.4rem solid #282828;border-bottom:.3464rem solid transparent}.cpm-main-nav .cpm-list-item_status .i-star,.cpm-main-nav .cpm-list-item_status .i-star_mark{position:absolute;z-index:1;top:.04rem;left:.04rem;width:.15rem;height:.15rem}.cpm-main-nav .cpm-list-item_status .i-star{background-position:-1.8rem 0}.cpm-main-nav .cpm-list-item_status .i-star_mark{background-position:-1.6rem 0}.cpm-main-nav .cpm-list-item .next{position:absolute;top:0;bottom:0;right:0;margin:auto;width:.25rem}.cpm-main-nav .cpm-list-item .next .i-arrow{position:absolute;top:0;bottom:0;margin:auto;right:.1rem;background-position:-.9rem -.2rem;width:.09rem;height:.14rem}.cpm-main-nav .cpm-team{width:48%;display:inline-block;vertical-align:top;-webkit-box-sizing:border-box;box-sizing:border-box}.cpm-main-nav .cpm-team:first-of-type{padding-right:.35rem}.cpm-main-nav .cpm-team:last-of-type{padding-left:.35rem}.cpm-main-nav .team-title{max-width:.9rem;margin:0 auto;max-height:.63rem;overflow:hidden;font-size:.14rem;color:#999}.cpm-main-nav .cpm-guess-vs{width:1.3rem;overflow:hidden;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.cpm-main-nav .cpm-guess-vs p{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2}.cpm-main-nav .match{color:#999;font-size:.11rem}.cpm-main-nav .meta{font-size:.29rem;display:none;color:#ddd;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;margin:.04rem auto}.cpm-main-nav .info{color:#ddd;font-size:.15rem;margin:.03rem auto .07rem}.cpm-main-nav .participate{font-size:.11rem;color:#777}.cpm-main-nav .record{font-size:.29rem;color:#ddd;margin:0 .1rem}.cpm-main-nav .cpm-list-item{width:100%;background-color:transparent}.cpm-main-nav .team-logo{width:.67rem;height:.67rem;border-color:rgba(255,255,255,.05)}.cpm-main-nav .team-title{color:#ddd;margin-top:.03rem}.cpm-main-nav .cpm-guess-vs{width:1.2rem}.cpm-main-nav .cpm-guess-vs .match{margin-top:.1rem;color:#999}.cpm-main-nav .cpm-guess-vs .meta{font-size:.4rem;color:#fff;line-height:1}.cpm-main-nav .cpm-guess-vs .sm{font-size:.3rem}.cpm-main-nav .instruction{position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;margin:auto;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/instruction.jpg?v=1461415188508) 0 0 no-repeat;-webkit-background-size:cover;background-size:cover;opacity:0}.cpm-main-nav .instruction.show{opacity:1;-webkit-animation:show 3s 1 forwards;animation:show 3s 1 forwards}@-webkit-keyframes show{90%{opacity:1}100%{opacity:0}}@keyframes show{90%{opacity:1}100%{opacity:0}}.cpm-main-nav .bd{margin:0 auto;border-bottom:.01rem solid #232734}.cpm-main-nav .i-live{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite__v2-1.png?v=1461415188509) no-repeat;-webkit-background-size:2rem auto;background-size:2rem auto;display:inline-block;background-position:-1.4rem -1.2rem;width:.18rem;height:.1rem;margin-left:.03rem}.cpm-dialog-info{background-color:#4b526c;width:2.8rem}.cpm-dialog .btn{height:.42rem;line-height:.42rem;padding:0;border-radius:.04rem;font-size:.16rem}.cpm-dialog .btn-confirm{background-color:#f9664d;border-color:#f9664d}.cpm-dialog .btn-confirm:active{background-color:#f85134;border-color:#f85134}.cpm-dialog .btn-cancel{background-color:#5a627e;border-color:#454b64;color:#b7c1e7}.cpm-dialog .btn-cancel:active{background-color:#4f566f;border-color:#3b4055}.bets_status{padding:.16rem;color:#7881a0}.bets_status__t{font-size:.2rem;color:#d5dfff}.bets_status .i_fail,.bets_status .i_suc{display:block;width:.43rem;height:.43rem;margin:0 auto .04rem;border-radius:.43rem}.bets_status .i_fail{background:#ffb432 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABWCAMAAABiiJHFAAAADFBMVEUAAAD///////////84wDuoAAAABHRSTlMA/ieftrwE8AAAAHlJREFUWMPtl0EOgCAMBMv6/y9TL5487RpI1MycmyltoKFVAAAAd4YZpzGr1HOtVn2Fm15l2d3ijqxnXUtPm4IWLVq0aNGiRftOrcJTmHEd/sE2/W+BTWfrpjMiq+1VmNysLlyg3Nf7x8Gop4PU7Wh/4N4ybwEA4L2cjXkaWbQhoP8AAAAASUVORK5CYII=) 0 0 no-repeat;-webkit-background-size:.43rem .43rem;background-size:.43rem .43rem}.bets_status .i_suc{background:#61cf3f url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAABWCAMAAABiiJHFAAAACVBMVEUAAAD///////9zeKVjAAAAA3RSTlMATf+SoxobAAAA4klEQVRYw+3WsQ6EMAwDUAz//8294RY4OU3iFukGewTxhEppfByO4ziO4zivBAiuL6NjkDvX8qvSFzvXFwBbWczW73xFldmbOvbthLu6j81UjU1Vic1VhS2oAltR+2xJbbM1lbPge7yuMvb7KN/lRZX9vAj/+bJKWIRnSV2dHTW/bkNl0wF83TsqHTrUbal8lhG3pwYjEpPvV1GjyYtwt5XUcKA/3LYangmPWdVW46OGTtaqOms10NVpWYKszjsYVDWpdhDVrDFCU9MiCknN+y0UtVCbIajrldNxHMdxHOcv8gEmL0Fkksk0PAAAAABJRU5ErkJggg==) 0 0 no-repeat;-webkit-background-size:.43rem .43rem;background-size:.43rem .43rem}
+    </style>
+    <style type="text/css">@charset "utf-8";.basketball.cpm-main-nav .hd{height:2.24rem}.basketball .m_load{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/bg_loading__basketball.jpg?v=1468495696813) 0 0 no-repeat;-webkit-background-size:cover;background-size:cover}.basketball .m_load .match{color:#ddd}.basketball .m_load .status{color:#efefef}.i-arrow,.i-arrow-sm{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite__v2-1.png?v=1468495696813) no-repeat;-webkit-background-size:2rem auto;background-size:2rem auto;background-position:-.7rem 0;width:.16rem;height:.09rem;display:inline-block;-webkit-transform-origin:50% 50%;transform-origin:50% 50%;vertical-align:.035rem;-webkit-transition:-webkit-transform .2s;transition:transform .2s}.i-arrow-sm{width:.11rem;height:.06rem;background-position:-1.2rem -1.2rem;-webkit-backface-visibility:hidden;backface-visibility:hidden}.i-question{width:.15rem;height:.15rem;line-height:1.25;border:.01rem solid #d15a48;color:#d15a48;border-radius:50px;display:inline-block;text-align:center;font-style:normal;margin-right:.04rem;font-size:.12rem}.cpm-btn-group{display:-webkit-box;display:-webkit-flex;display:flex}.cpm-btn-group .cpm-btn{display:block;margin:0 5px;-webkit-box-flex:1;-webkit-flex:1;flex:1}.main{padding-bottom:.55rem}.cpm-empty{text-align:center;color:#4f5364;font-size:.12rem;margin:.75rem auto}.cpm-empty_t{color:#7984aa;line-height:1.76470588;font-size:.17rem}.back-mod{background-color:#363c50;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;text-align:left;overflow:hidden;height:.5rem}.back-mod .back-mod_btn{min-width:.48rem;max-width:1.65rem;height:.5rem;line-height:.5rem;-webkit-box-flex:1;-webkit-flex:1;flex:1;position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;font-size:.16rem;color:#6f799a;padding-left:.59rem;-webkit-box-sizing:border-box;box-sizing:border-box}.back-mod .i-back{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAlCAMAAACas1IJAAAAGFBMVEUAAACCj7mCj7mCj7mCj7mCj7mCj7mCj7nTBUWpAAAACHRSTlMA+54DMSDIXddxmEoAAABlSURBVCjP7dMxFoAwCAPQQNr7n9dBcai2QHmewIw/WSPIaSqHbHgC1AKRp01EpP34jb1CNQBiSXnpLJ1CsTNhBRMVExUTFRMVD838aOJXI08NvNSzU8deFwedHPXlpIP79gDQmt0DbCYgPA9hKwAAAABJRU5ErkJggg==) 0 0 no-repeat;-webkit-background-size:cover;background-size:cover;position:absolute;top:0;left:.18rem;bottom:0;margin:auto;width:.11rem;height:.19rem}.back-mod .i-back:after{content:"";position:absolute;background-color:#49516c;width:.01rem;height:.25rem;right:-.2rem;top:0;bottom:0;margin:auto}.i-bean{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite-bets-toolbar.png) no-repeat;-webkit-background-size:.16rem .56rem;background-size:.16rem .56rem;width:.14rem;height:.14rem;margin-right:.02rem;background-position:0 -.2rem;position:absolute;top:0;bottom:0;left:0;margin:auto}.plus{width:.15rem;height:.15rem;border-radius:50%;background-color:#5a637f;position:absolute;right:0;top:0;bottom:0;margin:auto}.plus:before{position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;content:"";width:.1rem;height:.1rem;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAACVBMVEVMaXHEy+nEy+nmy5jDAAAAA3RSTlMAxP944jkZAAAAOklEQVQY082PMQ4AIAwCAf//ZXFpWmMTR+NN5MIAAwGFJCPBLneeSZKnssXeg9yk64aA+ccj1TrjygJ+AgcpGOV9QwAAAABJRU5ErkJggg==) 0 0 no-repeat;-webkit-background-size:cover;background-size:cover}.cpm-bets-toolbar{position:relative;z-index:96;background:#363c50;text-align:left;color:#6f799a}.cpm-bets-toolbar .hd{font-size:.14rem;padding:.1rem;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden;position:relative;color:#6f799a;display:-webkit-box;display:-webkit-flex;display:flex}.cpm-bets-toolbar .hd-title{color:#657de3;padding-right:.06rem;margin-right:.06rem;position:relative}.cpm-bets-toolbar .hd-title:after{content:"";position:absolute;top:0;bottom:0;right:0;margin:auto;width:1px;height:.12rem;background-color:#535b76}.cpm-bets-toolbar .hd .result{text-align:right;-webkit-box-flex:1;-webkit-flex:1;flex:1;font-size:.12rem;padding-right:.25rem;-webkit-box-sizing:border-box;box-sizing:border-box}.cpm-bets-toolbar .hd:after{content:"";position:absolute;z-index:0;background:#2b3040;bottom:0;right:.1rem;left:.1rem;height:1px;-webkit-transform:scaleY(.5);transform:scaleY(.5);-webkit-transform-origin:0 bottom;transform-origin:0 bottom}.cpm-bets-toolbar .val{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:.42rem;color:#657de3;margin:0 .03rem;display:inline-block;vertical-align:bottom}.cpm-bets-toolbar .name{color:#9dafe9}.cpm-bets-toolbar .counts{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:1rem;color:#6f799a;font-size:.12rem;position:relative;padding:0 .2rem 0 .17rem;-webkit-box-sizing:border-box;box-sizing:border-box;display:block}.cpm-bets-toolbar .cpm-bets-close{position:absolute;right:.06rem;top:.07rem;width:.22rem;height:.22rem;background:#313649;border-radius:.22rem}.cpm-bets-toolbar .cpm-bets-close:before{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite-bets-toolbar.png) no-repeat;-webkit-background-size:.16rem .56rem;background-size:.16rem .56rem;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;content:"";width:.16rem;height:.16rem;background-position:0 -.4rem}.cpm-bets-toolbar .bd{position:relative}.cpm-bets-toolbar .bd:after{content:"";height:0;display:table}.cpm-bets-toolbar .cpm-btn-group{margin:0 .07rem .08rem;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.cpm-bets-toolbar .cpm-bets-options,.cpm-bets-toolbar .cpm-btn{margin:0 .02rem}.cpm-bets-toolbar .ft{text-align:center;color:#a7a7a7;font-size:.14rem}.cpm-bets-toolbar .ft a{color:#73a9dc}.cpm-bets-toolbar .ft .ft-tips{padding:.1rem 0;border-top:1px solid #474242;margin-top:.05rem}.cpm-bets-toolbar .info{padding:0;margin:0 0 5px}.cpm-bets-toolbar .info .title{font-size:16px}.cpm-bets-toolbar .info .txt,.cpm-bets-toolbar .info .desc{font-size:12px;color:#666;word-break:break-all;word-wrap:break-word}.cpm-bets-toolbar .title span{padding:0 4px}.cpm-bets-toolbar .bets-amounts{line-height:36px;text-align:center}.cpm-bets-toolbar .bets-amounts .cpm-red{padding:0 4px;font-size:18px;vertical-align:-1px}.cpm-bets-toolbar .cpm-btn{display:inline-block;padding:8px 0;border-width:1px;border-style:solid;border-radius:3px;font-size:14px;line-height:18px;text-align:center;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.cpm-bets-toolbar .cpm-btn-large{display:block;width:100%;height:40px;font-size:16px;line-height:22px}.cpm-bets-toolbar .cpm-btn{font-size:.16rem;height:.34rem;line-height:.34rem;padding:0}.cpm-bets-toolbar .cpm-btn:first-child{margin-left:0}.cpm-bets-toolbar .cpm-btn:last-child{margin-right:0}.cpm-bets-toolbar .cpm-btn-primary{background-color:#495aa4;border-color:#495aa4;color:#fff}.cpm-bets-toolbar .cpm-btn-primary:active{background-color:#415092;border-color:#415092}.cpm-bets-toolbar .cpm-btn-default{background-color:#595253;border-color:#595253;color:#999}.cpm-bets-toolbar .cpm-btn-warn{background-color:#ca3f3f;border-color:#ca3f3f;color:#fff;font-size:.12rem!important}.cpm-bets-toolbar .cpm-btn-warn:active{background-color:#bc3434;border-color:#ca3f3f;color:#fff}.cpm-bets-toolbar .cpm-agree-rule{position:relative;display:block;padding:5px 0 0;margin:0;font-size:12px;line-height:12px;text-align:center;color:#666}.cpm-bets-toolbar .cpm-agree-rule a{color:#666;text-decoration:underline;-webkit-tap-highlight-color:rgba(0,0,0,.25)}.cpm-bets-toolbar .cpm-agree-rule a:visited{color:#666669}.cpm-bets-toolbar .cpm-agree-rule .cpm-checkbox{vertical-align:-1px}.cpm-bets-toolbar .cpm-checkbox{position:relative;display:inline-block;width:12px;height:12px;margin-right:4px;background-position:0 0;border:none;border-radius:0}.cpm-bets-toolbar .cpm-checkbox,.cpm-bets-toolbar .cpm-checkbox:checked:before{background-image:url(//static.gtimg.com/vd/lottery/v3/tc_idc/global/img/wx_i_checkbox@2x.png);background-repeat:no-repeat;-webkit-background-size:12px auto;background-size:12px auto}.cpm-bets-toolbar .cpm-checkbox:checked:before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background-position:0 -12px}.cpm-bets-toolbar .cpm-checkbox.active{background-position:0 -12px}.cpm-bets-toolbar .cpm-agree-rule{margin:.05rem auto;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.cpm-bets-options{position:relative;margin-top:-1px;font-size:.14rem;display:-webkit-box;display:-webkit-flex;display:flex}.cpm-bets-options .layout-col{-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start}.cpm-bets-options .active{border-bottom-color:#fff}.cpm-bets-options .cpm-btn,.cpm-bets-options .cpm-number-label{display:inline-block}.cpm-bets-tips{background-color:rgba(255,255,255,.8);bottom:.69rem;left:0;right:0;margin:auto;width:2.06rem;border-radius:.05rem;color:#333;text-align:center;padding:.08rem .12rem;-webkit-transition:opacity .2s .2s;transition:opacity .2s .2s}.cpm-bets-tips p{display:inline-block}.dd-toggle{display:block;height:.34rem;padding:0;background:#c4cbe9;border:1px solid #9ea8d1;border-radius:3px;font-size:14px;line-height:18px;color:#444b61;-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}.dd-toggle .caret{position:absolute;top:50%;margin-top:-6px;margin-left:4px;display:inline-block;width:12px;height:12px;background:url(data:img/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYBAMAAAASWSDLAAAALVBMVEX///+9vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb23pyD8AAAADnRSTlMAESIzRFVmd4iqu8zd7v+yXhgAAABbSURBVHhelY/BDUBQEESRkGiBFhyUoARlOKpMCUpwoAYu4tXg+H6yicSc9mWyuzPZt6YEKmah5srUwig0nEK+Mkgth1BsTy917ELJHR13vBb/mMBsMbV9bPpLL2JwICcPwcAzAAAAAElFTkSuQmCC) no-repeat;-webkit-background-size:cover;background-size:cover;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);-webkit-transition:all .2s linear 0s}.dd-menu{position:absolute;bottom:40px;right:0;left:0;display:none;border:1px solid #9ea8d1;border-radius:3px 3px 0 0;border-bottom:none;overflow:hidden;background-color:#c4cbe9;text-align:center}.dd-menu li{display:block;height:38px;border-bottom:1px solid #b1bbe2;color:#444b61;font-size:14px;line-height:38px;-webkit-box-sizing:border-box;box-sizing:border-box}.dd-menu li:last-child{border-bottom:none}.dd-menu li:active{background:#b1bbe2;color:#444b61}.cpm-dropdown{position:relative;z-index:10;width:1.24rem;margin:0}.cpm-dropdown.active .dd-toggle{border-top-left-radius:0;border-top-right-radius:0}.cpm-dropdown.active .caret{-webkit-transform:rotate(90deg)}.cpm-dropdown.active .dd-menu{display:block}.cpm-dropdown__gq .dd-toggle{height:.34rem;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;padding-right:.1rem;-webkit-box-sizing:border-box;box-sizing:border-box;font-size:.14rem}.cpm-dropdown__gq .dd-toggle .caret{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite-bets-toolbar.png) no-repeat;-webkit-background-size:.16rem .56rem;background-size:.16rem .56rem;width:.12rem;height:.08rem;-webkit-transform:rotate(0deg);transform:rotate(0deg);margin-top:-.04rem;margin-left:.1rem;-webkit-backface-visibility:hidden;backface-visibility:hidden}.cpm-dropdown__gq .dd-menu{bottom:.34rem;border:none}.cpm-dropdown__gq .dd-menu-allin{padding:.1rem 0;line-height:1}.cpm-dropdown__gq .dd-menu-allin_tips{display:block;padding-bottom:.02rem;font-size:.12rem;-webkit-transform:scale(.8);transform:scale(.8)}.cpm-dropdown__gq .sm{color:#444b61;font-size:.12rem}.cpm-dropdown__gq li{height:auto;padding:.1rem 0;line-height:.16rem;-webkit-backface-visibility:hidden;backface-visibility:hidden;font-size:.14rem}.cpm-dropdown__gq.active .caret{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.cpm-bets-toolbar .cpm-agree-rule{color:#6f799a}.cpm-bets-toolbar .cpm-agree-rule a,.cpm-bets-toolbar .cpm-agree-rule a:visited{color:#6f799a}.cpm-bets-toolbar_tips{position:absolute;top:-.27rem;right:0;left:0;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.cpm-bets-toolbar_tips .txt{height:.24rem;line-height:.24rem;color:#dee6ff;font-size:.12rem;display:block;padding:0 .12rem;background-color:rgba(73,90,164,.9);border-radius:50px;-webkit-box-shadow:0 0 0 .01rem #252834;box-shadow:0 0 0 .01rem #252834}.bets-list{margin:0 .1rem;max-height:.8rem;overflow:hidden;position:relative}.bets-list ul{position:relative;z-index:0}.bets-list_item{height:.4rem;line-height:.4rem;position:relative;color:#9dafe9}.bets-list_item:after{content:"";position:absolute;z-index:0;background:#2b3040;bottom:0;right:0;left:0;height:1px;-webkit-transform:scaleY(.5);transform:scaleY(.5);-webkit-transform-origin:0 bottom;transform-origin:0 bottom}.bets-list_item:last-of-type:after{display:none}.bets-list_type{margin-left:.16rem}.bets-list_close{position:absolute;width:.14rem;height:.14rem;right:0;top:0;bottom:0;margin:auto;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAGFBMVEVMaXFaY39aY39aY39aY39aY39aY39aY38JqCj7AAAACHRSTlMAMO3sWhmc/x/LiNMAAACgSURBVCjPfdJBDsNACEPRD570/vdtCl2kyUAyKtsnWcIgxggWYy+LsTlGPs1NpsAVCxvsuyD0UPPBOxELPezAu552YNfLflh12olTi114qtl22cRDmxUkpGiGlQ1sg2r4xHQALz0XtACIkqWW+u5dqVn2rtQse5O6GeS8r+5WVQ8rqqdN1cIu1cpOFVoYpCtTm1YG6e4Ks0+uXt5j5998AWhwc5KSi4DQAAAAAElFTkSuQmCC) no-repeat;-webkit-background-size:cover;background-size:cover}.bets-list__multiple:before,.bets-list__multiple:after{content:"";position:absolute;height:.16rem;right:0;left:0;z-index:2}.bets-list__multiple:before{top:0;background:-webkit-gradient(linear,left bottom,left top,from(rgba(54,60,80,0)),to(#363c50));background:-webkit-linear-gradient(bottom,rgba(54,60,80,0) 0,#363c50 100%);background:linear-gradient(to top,rgba(54,60,80,0) 0,#363c50 100%)}.bets-list__multiple:after{bottom:0;background:-webkit-gradient(linear,left top,left bottom,from(rgba(54,60,80,0)),to(#363c50));background:-webkit-linear-gradient(top,rgba(54,60,80,0) 0,#363c50 100%);background:linear-gradient(to bottom,rgba(54,60,80,0) 0,#363c50 100%)}.i{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite__v2-1.png?v=1468495696821) no-repeat;-webkit-background-size:2rem auto;background-size:2rem auto;display:inline-block;vertical-align:middle;width:.13rem;height:.15rem;margin-right:.06rem}.i-tray{background-position:0 0;width:.11rem;height:.13rem;position:absolute;top:0;bottom:0;left:-.15rem;margin:auto}.i-record{width:.15rem;height:.16rem;background-position:-.2rem 0}.i-status{background-position:-.4rem 0;width:.2rem;height:.2rem}.i-time{background-position:-1.3rem -.2rem;width:.15rem;height:.15rem;vertical-align:-.03rem;margin-right:.03rem}.i-bean{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite-bets-toolbar.png) no-repeat;-webkit-background-size:.16rem .56rem;background-size:.16rem .56rem;display:inline-block;width:.14rem;height:.14rem;margin-right:.02rem;background-position:0 -.2rem}.cpm-main-nav{height:auto}.cpm-main-nav .meta{display:block}.order-list{list-style:decimal inside}.order-list li{margin:.1rem auto}.order-list li:first-child{margin-top:0}.order-list .guess-mod_title{overflow:hidden}.cpm-list-tag{color:#dbffd6;font-size:.11rem;border-radius:.02rem;background-color:#509b09;padding:.03rem;line-height:1;margin-left:.06rem;display:inline-block;vertical-align:.01rem}.main{-webkit-box-sizing:border-box;box-sizing:border-box;font-size:.14rem;position:relative}.main__index{padding:0 0 .65rem}.main__index .cpm-guess-item{padding:0 .12rem;-webkit-box-sizing:border-box;box-sizing:border-box}.main__index li:last-child .cpm-guess-item{border-bottom:0}.copyright{text-align:center;margin-bottom:.03rem;color:#373d51;position:absolute;bottom:.52rem;left:0;right:0;margin:0 auto;font-size:.1rem}.cpm-seal-bar{color:#f9664d;font-size:.12rem;overflow:hidden;background-color:#282d3c;line-height:2.07142857;padding:0 .06rem;margin:.04rem 0;-webkit-box-sizing:border-box;box-sizing:border-box;display:none;-webkit-box-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;-webkit-box-align:center;-webkit-align-items:center;align-items:center;border-radius:.2rem 0 0 .2rem;position:absolute;top:0;right:0;max-width:1.25rem}.cpm-odds-list{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;background-color:#3f465d;border-radius:.04rem;height:.5rem;overflow:hidden;margin:.05rem auto;-webkit-transition:-webkit-transform .2s;transition:transform .2s;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-mask-image:-webkit-radial-gradient(circle,white,black)}.cpm-odds-list .i-arrow-sm{position:absolute;right:.09rem;top:0;bottom:0;margin:auto}.cpm-odds-list .item{-webkit-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;text-align:center;position:relative;padding:.06rem .02rem;-webkit-transition:background .1s;transition:background .1s;height:.52rem;min-width:25%;-webkit-box-flex:1;-webkit-flex:1;flex:1;color:#d2ddff}.cpm-odds-list .item:after{content:"";position:absolute;right:0;top:0;bottom:0;margin:auto;width:1px;height:.31rem;border-right:1px dashed #202020}.cpm-odds-list .item:last-child:after{display:none}.cpm-odds-list .item .odds{font-size:.11rem;color:#919bbf}.cpm-odds-list .active{background-color:#495aa4;color:#fff}.cpm-odds-list .active:after{display:none}.cpm-odds-list .active .odds{color:#fff}.cpm-odds-list.cpm-list-multiline{-webkit-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;height:auto}.cpm-odds-list.cpm-list-multiline .item{-webkit-box-flex:0;-webkit-flex:0 1 auto;flex:0 1 auto;width:25%;border-bottom:1px solid #343a4d;text-align:center;height:.52rem}.cpm-odds-list.cpm-list-multiline .item:nth-child(4n):after{display:none}.cpm-odds-list.cpm-list-multiline .item:last-child{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:25%;width:auto}.cpm-odds-list.list-more .item:nth-child(n+5){display:none}.cpm-odds-list.show .item:nth-child(n+5){display:block}.cpm-odds-list.show .i-arrow-sm{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.cpm-odds-list.cpm-list-col_3 .item{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:33.3%}.cpm-odds-list.cpm-list-col_3 .item:nth-child(3n):after{display:none}.cpm-odds-list.cpm-list-col_3 .item:nth-child(4n):after{display:block}.cpm-odds-list.cpm-list-col_3 .item:last-child{min-width:33.3%}.cpm-odds-list.cpm-list-col_3 .item:last-child:after{display:none}.cpm-odds-list .item-more{padding:.14rem .02rem;height:100%;color:#d2ddff}.cpm-odds-list .item-more.active{background:none}.item-desc{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.guess-mod{padding-bottom:.1rem}.guess-mod_title{background-color:#282d3c;color:#7680a3;padding:.05rem .14rem;position:relative}.guess-mod_list li{margin-top:.14rem}.list-combine{margin:.05rem auto}.list-combine .cpm-odds-list{margin:0;border-radius:.04rem .04rem 0 0;border-bottom:0}.list-combine .cpm-odds-list:last-child{border-radius:0 0 .04rem .04rem;border-top:0;border-bottom:1px solid #121212}.list-title{-webkit-box-sizing:border-box;box-sizing:border-box;position:relative;color:#8a95b6;padding:.03rem .2rem;line-height:1;overflow:hidden}.list-title:before{background-color:#4c546e;content:"";position:absolute;width:.02rem;height:.11rem;left:.14rem;top:0;bottom:0;margin:auto}.list-title_desc{float:right;font-size:.12rem;color:#606679}.tag__rules{float:right;font-size:.14rem;color:#495aa4}.tag__rules .i-question{color:#252834;background-color:#495aa4;border-color:#495aa4;width:.13rem;height:.13rem;line-height:.13rem;font-size:.11rem}.fold-list{padding-bottom:0}.fold-list .i-arrow__list{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.fold-list .guess-mod_list{display:none}.fold-list .guess-mod_title{margin-bottom:1px}.i-arrow__list{width:.11rem;height:.06rem;background-position:-.9rem 0;position:absolute;right:.1rem;top:0;bottom:0;margin:auto;-webkit-transition:-webkit-transform .2s;transition:transform .2s;-webkit-backface-visibility:hidden;backface-visibility:hidden}.no-flex-wrap{display:block}.no-flex-wrap .item{float:left}.game-mod .list-title{background:none;line-height:1;margin-top:.15rem;padding-left:.21rem;padding-right:.21rem}.game-mod .list-title:before{background-color:#495aa4}.game-mod .val{float:right;color:#444b63;font-size:.11rem;margin-top:.02rem}.game-mod .tag{display:none}.game-mod .cpm-guess-item{padding-top:0;padding-bottom:.25rem}.game-mod .cpm-odds-list{background:none;height:auto;overflow:visible;-webkit-mask-image:none}.game-mod .item{background-color:#414860;width:.86rem;height:.95rem;-webkit-box-flex:0;-webkit-flex:0 1 auto;flex:0 1 auto;border-radius:.04rem;padding:0;color:#d9e2ff;overflow:visible;margin:0 .07rem}.game-mod .item:after{display:none}.game-mod .item-hd{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;padding:.02rem 0}.game-mod .item-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.11rem;color:#646b86;display:block;max-width:100%}.game-mod .item-title__vs{font-size:.27rem;font-weight:700;padding-top:.23rem;display:block}.game-mod .item-desc{margin-top:.01rem}.game-mod .odds{display:inline-block}.game-mod .active{background-color:#495aa4}.game-mod .active .item-title{color:#fff}.game-mod .active .game-progress{background-color:#35458c}.game-mod .active .game-progress_bar{background-color:#4bbbfb}.game-mod .active .odds{color:#919bbf}.game-progress{background-color:#343b4f;width:100%;height:.03rem;position:absolute;bottom:0;left:0;border-radius:0 0 .04rem .04rem;overflow:hidden;z-index:5}.game-progress_bar{position:absolute;top:0;left:0;width:100%;height:inherit;background-color:#515a76}.game-progress_desc{color:#373d51;font-size:.11rem;position:absolute;bottom:-.19rem;left:0;right:0;margin:auto}.team-logo{margin:0 auto;padding:0;width:.43rem;height:.43rem;border-radius:86px;overflow:hidden}.team-logo img{vertical-align:top;width:100%;max-width:100%;max-height:100%;height:100%}.basketball .cpm-odds-list{-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center}.basketball .item{margin:0 .12rem;width:.96rem;height:1.05rem}.basketball .team-logo{width:.52rem;height:.52rem}.basketball .item-title{font-size:.12rem;max-width:.5rem}.basketball .tag{display:block;font-size:.11rem;margin-left:.02rem}.basketball .tag__plus{color:#d2523c}.basketball .tag__minus{color:#48ac29}.basketball .active .tag{color:#fff}.cpm-seal .cpm-odds-list,.seal-list .cpm-odds-list{background-color:#282d3c;border:1px solid #1e2330}.cpm-seal .tips-tag,.seal-list .tips-tag{display:none}.cpm-seal .item,.seal-list .item{color:#676f89;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center}.cpm-seal .item:after,.seal-list .item:after{border-color:#11141a}.cpm-seal .item-more.active,.seal-list .item-more.active{color:#6f799a}.cpm-seal .odds,.seal-list .odds{display:none}.cpm-seal .active,.seal-list .active{background:none;color:#f9664d}.cpm-seal .active:after,.seal-list .active:after{display:block}.cpm-seal .active:last-child:after,.seal-list .active:last-child:after{display:none}.cpm-seal .cpm-list-multiline .item,.seal-list .cpm-list-multiline .item{height:.5rem;line-height:.5rem;border-color:#222633;padding:0}.cpm-seal .guess-mod_title,.seal-list .guess-mod_title{color:#6f799a}.cpm-seal .list-combine .cpm-odds-list,.seal-list .list-combine .cpm-odds-list{border-bottom:0}.cpm-seal .list-combine .cpm-odds-list:last-child,.seal-list .list-combine .cpm-odds-list:last-child{border-bottom:1px solid #222633}.cpm-seal{overflow:hidden;position:relative}.cpm-seal .cpm-seal-bar{display:-webkit-box;display:-webkit-flex;display:flex}.cpm-seal .i-seal{display:block}.cpm-seal .game-mod{margin-top:.3rem}.cpm-seal .game-mod .cpm-odds-list{background:none;border:none}.cpm-seal .game-mod .item{background-color:#282d3c;border:.01rem solid #1e2330}.cpm-seal .game-mod .item:after{display:none}.cpm-seal .active .game-progress{background-color:#343b4f}.cpm-seal .active .game-progress_bar{background-color:#515a76}.cpm-seal .active .item-title,.cpm-seal .active .info{color:#646b86}.i-seal{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite__v2-1.png?v=1468495696827) no-repeat;-webkit-background-size:2rem auto;background-size:2rem auto;width:.7rem;height:.7rem;position:absolute;top:-.13rem;right:0;background-position:0 -.3rem;display:none;z-index:5}.footer{background-color:#383434;text-align:center}.footer .cpm-btn{color:#d6d6d6;border:none;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;position:relative;padding:0;font-size:.16rem;height:.34rem;line-height:.34rem}.footer .cpm-btn:after{content:"";position:absolute;top:0;right:0;bottom:0;margin:auto;width:1px;height:.25rem;background-color:#474242}.footer .cpm-btn:last-child:after{display:none}.form{padding:.05rem 0 .05rem .09rem;-webkit-box-sizing:border-box;box-sizing:border-box;background-color:#fff}.form__number{width:100%}.form__number .number{width:100%;padding:.07rem .12rem;font-size:.17rem;color:#333;-webkit-box-sizing:border-box;box-sizing:border-box;border:1px solid #ddd;min-width:2.26rem;border-radius:.03rem}.form__number .number::-webkit-input-placeholder{color:#aeaeae;font-size:.14rem}.form__number .form-tips{position:absolute;color:#666;font-size:.14rem;right:.05rem;top:0;bottom:0;margin:auto;z-index:5;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.form__number .form-tips_val{color:#e0243f;margin-left:.04rem}.form-group{-webkit-box-flex:1;-webkit-flex:1;flex:1;position:relative}.form .btn-group{padding:0}.form .btn-confirm{width:.68rem;height:.34rem;line-height:.34rem;padding:0;margin:0 .08rem;background-color:#cd2039;border-color:#cd2039;font-size:.14rem}.form .btn-confirm:active{background-color:#b71d33}form{height:.34rem;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center}.cpm-bets-tips{background-color:rgba(255,255,255,.8);bottom:.69rem;left:0;right:0;margin:auto;width:2.06rem;border-radius:.05rem;color:#333;text-align:center;padding:.08rem .12rem;-webkit-transition:opacity .2s .2s;transition:opacity .2s .2s}.cpm-bets-tips p{display:inline-block}.cpm-dialog_page{text-align:left;color:#9ba6cd;background-color:#4b526c}.cpm-dialog_page .i-avatar{background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img/sprite__v2-1.png?v=1468495696800) no-repeat;-webkit-background-size:2rem auto;background-size:2rem auto;width:.75rem;height:.63rem;position:absolute;top:-.04rem;right:.12rem;background-position:0 -1.1rem}.cpm-dialog_page .dialog-tag{font-size:.11rem;color:#677195;margin-bottom:.12rem}.cpm-dialog_page .dialog-hd,.cpm-dialog_page .dialog-bd{padding:.025rem .15rem}.cpm-dialog_page .dialog-hd{font-size:.16rem;color:#d5dfff;padding-top:.1rem;padding-bottom:.09rem}.cpm-dialog_page .dialog-ft{margin-top:.23rem}.cpm-dialog_page .dialog-ft .btn{width:2.61rem;height:.41rem;line-height:.41rem;padding:0;margin:0 auto .12rem;border:none;background-color:#495aa4;color:#fff;font-size:.16rem}.cpm-dialog_page .dialog-ft .btn:active{background-color:#415092}.back-mod .user-info{position:relative;width:3rem}.back-mod .user-info_name{color:#6f799a;font-size:.12rem;line-height:1}.back-mod .user-info_detail{font-size:.14rem;color:#bec9ec;position:relative}.back-mod .user-info_detail .plus{position:relative;display:inline-block;vertical-align:-.03rem;margin-left:.05rem}.back-mod .user-info_detail b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:.95rem;display:inline-block;vertical-align:bottom}.back-mod .cpm-btn{font-size:.14rem;height:.34rem;line-height:.34rem;text-align:center;display:block}.back-mod .cpm-btn.cpm-btn-default{background-color:#5a627e;color:#dfe6ff;font-size:.14rem;width:.96rem;border:none;position:absolute;right:.1rem;top:0;bottom:0;margin:auto;height:.34rem;line-height:.34rem}.back-mod .cpm-btn.cpm-btn-default:active{background-color:#4f566f}.back-mod .cpm-btn.cpm-btn-primary{background-color:#ac1a2f;color:#fff;width:2.62rem;border:.01rem solid #322e2e;border-radius:.03rem;margin:0 .12rem 0 -.1rem}.back-mod .cpm-btn.cpm-btn-primary:active{background-color:#961729}.dialog-present{position:relative;z-index:100;border:.03rem #12192a solid;border-radius:.06rem;width:2.87rem}.dialog-present:after{content:"";position:absolute;bottom:0;left:0;z-index:99;pointer-events:none;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img//virtual-game/sprite-dialog_present.png?v=1468495696802) no-repeat 0 -2.48rem;width:2.87rem;height:1.67rem;-webkit-background-size:2.87rem auto;background-size:2.87rem auto}.dialog-present .dialog-hd{position:relative;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img//virtual-game/sprite-dialog_present.png?v=1468495696802) no-repeat 0 0;width:2.87rem;height:.79rem;-webkit-background-size:2.87rem auto;background-size:2.87rem auto}.dialog-present .dialog-bd{background:#1d2437;margin:-.05rem 0 0;font-size:.15rem;padding:0 .14rem .13rem}.dialog-present .dialog-ft{background:#1d2437;text-align:center}.dialog-present-title{position:absolute;top:-.46rem;font-size:0;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img//virtual-game/sprite-dialog_present.png?v=1468495696802) no-repeat 0 -.84rem;width:2.83rem;height:1.1rem;-webkit-background-size:2.87rem auto;background-size:2.87rem auto}.dialog-present mark{background:transparent;font-size:1.0em}.dialog-present-desc{color:#d9e4ff;margin-bottom:.21rem}.dialog-present-desc mark{color:#f9a423}.dialog-present-subdesc{font-size:.12rem;color:#656b81}.dialog-present-subdesc mark{color:#7f97d9}.dialog-present-btn{font-size:.16rem;display:inline-block;line-height:.36rem;padding-top:.02rem;background:url(//static.gtimg.com/vd/lottery/v3/tc_idc/m/gq/img//virtual-game/sprite-dialog_present.png?v=1468495696804) no-repeat 0 -1.99rem;width:2.64rem;height:.49rem;-webkit-background-size:2.87rem auto;background-size:2.87rem auto;color:#fff;text-shadow:0 0 .02rem #a45100,0 0 .02rem #a45100,0 0 .02rem #a45100,0 0 .02rem #a45100,0 0 .02rem #a45100,0 0 .02rem #a45100,0 0 .02rem #a45100,0 0 .02rem #a45100}.main .active .text-green,.main .active .text-red{color:#fff}.main .text-green,.main .text-red{display:inline;background-color:transparent;font-size:.12rem}.main .text-green{color:#61cf3f}.main .text-red{color:#ff7962}
+    </style>
+    <style type="text/css">.recommend{color:#cedaff;font-size:.12rem;margin:.05rem 0}.recommend-bd{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column}.recommend-bd_item{border:.02rem solid #6e789b;border-radius:.2rem;position:relative;padding:0 .15rem 0 .3rem;-webkit-box-sizing:border-box;box-sizing:border-box;margin-bottom:.07rem}.recommend-bd_desc{height:.25rem;line-height:2.08333333}.figure-recommend{width:.31rem;height:.31rem;border-radius:62px;overflow:hidden;margin:auto;position:absolute;top:0;bottom:0;left:-.1rem}.figure-recommend img{vertical-align:top;max-width:100%;max-height:100%;width:100%;height:100%}
+    </style>
+    <section>
+        <div style="height: 2.15rem;">
+            <header class="header">
+                <nav class="cpm-main-nav " style="top:auto;width: 100%;">
+                    <div class="hd">
+                        <div id="live_area"  style="z-index:90;top:0;left:0;height:1.75rem;">
+                            <div id="SRLive">
+                                <div class="srw-container sc16-single sc16-slim">
+                                    <div class="sc16-livematchtracker sc-size-small sc-top">
+                                        <div class="sc-lmt">
+                                            <div class="sc-matchscoreboard">
+                                                <div class="sc-team-home">
+                                                    <img class="sc-crest sc-crestteam-home" src="__ROOT__/upload/<{$info.host_info.icon}>" alt="">
+                                                    <span class="sc-full"><{$info.host_info.area}><{$info.host_info.name}></span>
+                                                    <span class="sc-abbr"><{$info.host_info.name}></span>
+                                                </div>
+                                                <div class="sc-team-away">
+                                                    <span class="sc-full"><{$info.guess_info.area}><{$info.guess_info.name}></span>
+                                                    <span class="sc-abbr"><{$info.guess_info.name}></span>
+                                                    <img class="sc-crest sc-crestteam-away" src="__ROOT__/upload/<{$info.guess_info.icon}>" alt=""></div>
+                                                <div class="sc-main">
+                                                    <div class="sc-status" style="padding-top: 0.1rem;">
+                                                        <span><{$MatchResult[$info['result']]}></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sc-lmt-wrapper">
+                                                <div class="sc-lmt-content">
+                                                    <div class="sc-pitch">
+                                                        <div class="sc-pitch-bg-wrapper">
+                                                            <!-- normal -->
+                                                            <img data-weather="normal" class="sc-pitch-background sc-normal" src="//ls.betradar.com/ls/livescore/assets/qqlottery/sportcenter16/images/lmt/match-pitch-good.jpg" style="top: 0px;">
+                                                        </div>
+                                                        <div class="sc-pitch-content">
+                                                            <div class="sc-livematchtracker-content">
+                                                                <!-- place holder for live match tracker navigation components -->
+                                                                <div class="sc-field">
+                                                                    <!-- render components based on components received -->
+                                                                    <div class="sc-match-tab-content sc-match-info sc-active">
+                                                                        <div class="sc-matchinfo-container owl-carousel owl-theme" style="opacity: 1; display: block;">
+                                                                            <!-- match info -->
+                                                                            <div class="owl-wrapper-outer">
+                                                                                <div class="owl-wrapper" style="width: 1500px; left: 0px; display: block; transition: all 400ms ease; transform: translate3d(0px, 0px, 0px);">
+                                                                                    <div class="owl-item" style="width: 375px;">
+                                                                                        <div class="sc-matchinfo sc-matchinfo-info sc-active carousel-item srlive-first-show" style="margin-top: 0px;">
+                                                                                            <table class="sc-general-info">
+                                                                                                <tbody>
+                                                                                                <tr class="sc-row sc-title">
+                                                                                                    <td colspan="3">
+                                                                                                        <div class="sc-title"><{$info.name}></div>
+                                                                                                        <div class="sc-subtitle sc-realcategory sc-no-opacity"><{$info.place}></div></td>
+                                                                                                </tr>
+                                                                                                <tr class="sc-row sc-match-info">
+                                                                                                    <td class="sc-icon-crest sc-home">
+                                                                                                        <img class="sc-crest sc-crestteam-home" src="__ROOT__/upload/<{$info.host_info.icon}>" alt="">
+                                                                                                        <div class="sc-team-name sc-title"><{$info.host_info.area}><{$info.host_info.name}></div>
+                                                                                                        <div class="sc-team-abbr sc-title"><{$info.host_info.name}></div></td>
+                                                                                                    <td>
+                                                                                                        <div class="sc-separator sc-subtitle">vs</div>
+                                                                                                        <div class="sc-time-info">
+                                                                                                            <div class="sc-title">
+                                                                                                                <span class="sc-time"><{$info.b_time}></span>
+                                                                                                                <span class="sc-timezone">GMT+8</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </td>
+                                                                                                    <td class="sc-icon-crest sc-away">
+                                                                                                        <img class="sc-crest sc-crestteam-away" src="__ROOT__/upload/<{$info.guess_info.icon}>" alt="">
+                                                                                                        <div class="sc-team-name sc-title"><{$info.guess_info.area}><{$info.guess_info.name}></div>
+                                                                                                        <div class="sc-team-abbr sc-title"><{$info.guess_info.name}></div></td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td class="sc-manager sc-home">
+                                                                                                        <div class="sc-subtitle sc-no-opacity"><{$info.host_info.coach}></div>
+                                                                                                        <div class="sc-subtitle">主教练</div></td>
+                                                                                                    <td class="sc-referee-info">
+                                                                                                        <div class="sc-subtitle sc-no-opacity"></div>
+                                                                                                        <div class="sc-subtitle"></div></td>
+                                                                                                    <td class="sc-manager sc-away">
+                                                                                                        <div class="sc-subtitle sc-no-opacity"><{$info.guess_info.coach}></div>
+                                                                                                        <div class="sc-subtitle">主教练</div></td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="navBar" class="bd">
+                        <a class="ball_tab active" onclick="showMatch(this)">
+                            <span>竞猜</span>
+                        </a>
+                        <a class="ball_tab" onclick="showRecord(this)">
+                            <span>记录</span>
+                        </a>
+                    </div>
+                </nav>
+            </header>
+        </div>
+        <div id="tab_match">
+            <div style="position:relative;min-height:auto;">
+                <div class="main main__index">
+                    <div class="game-mod">
+                        <span></span>
+                        <ol class="guess-mod_list">
+                            <li>
+                                <div class="">
+                                    <h4 class="list-title">
+                                        <span>当前不能下注</span>
+                                  <span class="val">
+                                    <span><{$info.times}></span>
+                                    <span>人已竞猜</span></span>
+                                  <span class="cpm-hide">
+                                    <i class="i i-time"></i>
+                                    <span>开赛后可猜</span>
+                                  </span>
+                                    </h4>
+                                    <div class="cpm-guess-item">
+                                        <div class="cpm-odds-list">
+                                            <div class="item" data-pe="win">
+                                                <div>
+                                                    <div class="item-hd <eq name='info.result' value='3'>active</eq>">
+                                                        <strong class="item-title"><{$info.host_info.name}></strong>
+                                                    </div>
+                                                    <figure class="team-logo">
+                                                        <img src="__ROOT__/upload/<{$info.host_info.icon}>"></figure>
+                                                    <div class="item-desc">
+                                                        <strong class="title">主胜</strong>
+                                                        <p class="odds">
+                                                            <span>&nbsp;</span>
+                                                            <span><{$info.rate.win}></span></p>
+                                                    </div>
+                                                    <div class="game-progress">
+                                                        <div class="game-progress_bar" style="width: <{$record.win}>%;"></div>
+                                                    </div>
+                                                    <p class="game-progress_desc">
+                                                        <span><{$record.win}></span>
+                                                        <span>%人竞猜</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="item <eq name='info.result' value='4'>active</eq>" data-pe="draw">
+                                                <div>
+                                                    <strong class="item-title item-title__vs">VS</strong>
+                                                    <div class="item-desc">
+                                                        <strong class="title">平</strong>
+                                                        <p class="odds">
+                                                            <span>&nbsp;</span>
+                                                            <span><{$info.rate.draw}></span></p>
+                                                    </div>
+                                                    <div class="game-progress">
+                                                        <div class="game-progress_bar" style="width:<{$record.draw}>%;"></div>
+                                                    </div>
+                                                    <p class="game-progress_desc">
+                                                        <span><{$record.draw}></span>
+                                                        <span>%人竞猜</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="item <eq name='info.result' value='5'>active</eq>" data-pe="lose">
+                                                <div>
+                                                    <div class="item-hd">
+                                                        <strong class="item-title"><{$info.guess_info.name}></strong>
+                                                    </div>
+                                                    <figure class="team-logo">
+                                                        <img src="__ROOT__/upload/<{$info.guess_info.icon}>"></figure>
+                                                    <div class="item-desc">
+                                                        <strong class="title">客胜</strong>
+                                                        <p class="odds">
+                                                            <span>&nbsp;</span>
+                                                            <span><{$info.rate.lose}></span></p>
+                                                    </div>
+                                                    <div class="game-progress">
+                                                        <div class="game-progress_bar" style="width:<{$record.lose}>%;"></div>
+                                                    </div>
+                                                    <p class="game-progress_desc">
+                                                        <span><{$record.lose}></span>
+                                                        <span>%人竞猜</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="match_result">
+                                    <{$MatchResult[$info['result']]}>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div >
+                    <div class="cpm-dialog-mod cpm-hide" id="buySuccess">
+                        <div class="cpm-mask" ></div>
+                        <div class="cpm-dialog cpm-dialog-info" >
+                            <div class="bets_status" >
+                                <i class="i_suc" ></i>
+                                <strong class="bets_status__t" >投注成功</strong>
+                            </div>
+                            <div class="dialog-ft" >
+                                <div class="btn-group" >
+                                    <a class="btn btn-cancel" >查看详情</a>
+                                    <a href="<{:U('match')}>?id=<{$info.id}>" class="btn btn-confirm" id="goBuyBtn">继续投注</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer cpm-fixed cpm-fixed-b" style="position:fixed;" >
+                        <div class="back-mod cpm-fixed cpm-fixed-b" style="position:fixed;" >
+                            <a href="<{:U('index')}>" class="back-mod_btn" >
+                                <i class="i i-back" ></i>
+                            </a>
+                            <div class="user-info" >
+                                <p class="user-info_name" ><{$Think.session.nickname}></p>
+                                <p class="user-info_detail" data-pe="tap:lg.match.recharge" data-hottag="ball.gunqiu.recharge.赛事页1" >
+                                    <span >金豆：</span>
+                                    <b class="leftCoinNum" ><{$Think.session.coin}></b>
+                                    <span class="plus" ></span>
+                                </p>
+                            </div>
+                            <a href="<{:U('myGuess')}>" class="cpm-btn cpm-btn-default" >竞猜记录</a></div>
+                        <div class="cpm-bets-toolbar cpm-hide" id="footerBet" >
+                            <div class="hd" >
+                                <span class="counts" >
+                                  <i class="i i-bean" ></i>
+                                  <span class="leftCoinNum" ><{$Think.session.coin}></span>
+                                  <span class="plus" ></span>
+                                </span>
+                                <div class="result" >
+                                    <span >猜对可以赢</span>
+                                    <span class="val rewardCoin" style="overflow:auto;max-width:none;" ></span>
+                                    <span >金豆</span></div>
+                                <i class="cpm-bets-close" ></i>
+                            </div>
+                            <div class="bd" >
+                                <div class="bets-list" >
+                                    <ul >
+                                        <li class="bets-list_item" >
+                                            <span id="pk"></span>
+                                            <span class="bets-list_type" id="bets-list_type"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="cpm-btn-group" >
+                                    <div class="cpm-bets-options" >
+                                        <div class="layout-col" >
+                                            <div >
+                                                <div class="cpm-dropdown cpm-dropdown__gq" id="cpm-dropdown__gq">
+                                                    <a href="javascript:void(0);" class="dd-toggle">
+                                                        <span>投200金豆</span>
+                                                        <input type="hidden" name="cost" value="200">
+                                                        <input type="hidden" name="option" value="">
+                                                        <input type="hidden" name="matchid" value="">
+                                                        <input type="hidden" name="rate" value="">
+                                                        <i class="caret"></i>
+                                                    </a>
+                                                    <ul class="dd-menu">
+                                                        <li data-value="2000">投2000金豆</li>
+                                                        <li data-value="1000">投1000金豆</li>
+                                                        <li data-value="500">投500金豆</li>
+                                                        <li data-value="200">投200金豆</li>
+                                                        <li data-value="100">投100金豆</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="cpm-hide" >
+                                                    <div class="cpm-mask" ></div>
+                                                    <div class="form form__number cpm-fixed cpm-fixed-b" >
+                                                        <form >
+                                                            <input type="hidden" name="cost" value="200">
+                                                            <input type="hidden" name="option" value="">
+                                                            <input type="hidden" name="matchid" value="">
+                                                            <input type="hidden" name="rate" value="">
+                                                            <div class="form-group" >
+                                                                <input type="tel" name="number" value="" class="number form-control" maxlength="11" placeholder="当期您最多可投注888金豆" >
+                                                                <div class="form-tips" >
+                                                                    <p class="cpm-hide" >
+                                                                        <span >可赢</span>
+                                                                        <span class="form-tips_val rewardCoin" ></span>
+                                                                        <span >金豆</span></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="btn-group" >
+                                                                <input type="submit" class="btn-confirm" value="确定" ></div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="cpm-btn cpm-btn-large cpm-btn-primary" id="sureBuyBtn">确认下注</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div id="act_jindou_daily_sign" ></div>
+
+            </div>
+        </div>
+        <div class="cpm-hide" id="record_match">
+            <style>
+                .recordCon li.rBg {
+                    position: absolute;
+                    left: -20px;
+                    z-index: 15;
+                }
+                .recordCon li {
+                    color: #999;
+                    line-height: 20px;
+                    font-size: 12px;
+                    padding-left: 40px;
+                }
+                .recordCon li img {
+                    width: 40px;
+                    height: 40px;
+                    margin: 2px 0 0 3px;
+                    border-radius: 50%;
+                }
+                .recordCon img {
+                    width: 100%;
+                    height: auto;
+                    margin-top: 2px;
+                    margin-right: 0;
+                    margin-bottom: 0;
+                    margin-left: -18px;
+                }
+                img {
+                    border: none;
+                }
+                .recordCon span {
+                    margin-right: 10px;
+                    font-size: 14px;
+                }
+                .orange {
+                    color: #1ba9ba;
+                }
+                .recordCon em {
+                    color: #ccc;
+                }
+                em {
+                    font-style: normal;
+                }
+            </style>
+            <ul class="cpm-game-mod_bd recordCon" id="matchRecordList">
+            </ul>
+        </div>
+    </section>
+</div>
+<script>
+    leftCoinNum = '<{$Think.session.coin}>';
+    matchInfo = {'id':"<{$info.id}>",'win':"<{$info.rate.win}>",'draw':"<{$info.rate.draw}>",'lose':"<{$info.rate.lose}>",'pk':"<{$info.host_info.name}>VS<{$info.guess_info.name}>",'name':"<{$info.name}>"};
+
+    showMatch = function(obj){
+        $('#navBar a').removeClass('active');
+        $(obj).addClass('active');
+        $('#tab_match').removeClass('cpm-hide');
+        $('#record_match').addClass('cpm-hide');
+    };
+
+    showRecord = function(obj){
+        $('#navBar a').removeClass('active');
+        $(obj).addClass('active');
+        $('#record_match').removeClass('cpm-hide');
+        $('#tab_match').addClass('cpm-hide');
+    }
+
+
+    //选择中球队
+    function chooseTeam(item){
+        var matchid = matchInfo.id;
+        var pe = item.attr('data-pe');
+        var info = matchInfo;
+        var rate = info[pe];
+        var best;
+        if (pe=='win'){
+            best = '主胜';
+        }else if (pe == 'draw'){
+            best = '平';
+        }else if(pe == 'lose'){
+            best = '客胜';
+        }else{
+            return false;
+        }
+        $('input[name="matchid"]').val(matchid);  //记录选择
+        $('input[name="option"]').val(pe);  //记录选择
+        $('input[name="rate"]').val(rate);  //记录选择
+        $('#pk').html(info.pk);
+        $('#bets-list_type').html(best+'（'+rate+'）');
+        updateCost();
+        $('#footerBet').addClass('cpm-bets-toolbar').removeClass('cpm-hide');
+    }
+
+    //更新回报金蛋数
+    function updateCost(){
+        var rate = $('input[name="rate"]').val();
+        var cost = $('input[name="cost"]').val();
+        var reward = rate * cost;
+        $('.rewardCoin').html(reward+'金豆');
+
+    }
+
+    function log(s){
+        console.log(s);
+    }
+
+    //点击确认下载按钮
+    $('#sureBuyBtn').click(function(){
+        var matchid = $('input[name="matchid"]').val();
+        var option = $('input[name="option"]').val();
+        var rate = $('input[name="rate"]').val();
+        var cost = $('input[name="cost"]').val();
+        if(rate*cost > leftCoinNum){
+            //金豆数量不足
+            alert('金豆不足');
+        }else{
+            $.ajax({
+                'data':{
+                    'matchid':matchid,
+                    'option':option,
+                    'cost':cost
+                },
+                'type':'post',
+                'beforeSend':function(){
+                    $('#loading2').css('display','block');
+                    $('#loading2 .m-loading').html('<i class="i-loading"></i>');
+                },
+                'url':"<{:U('buyBall')}>",
+                'success':function(res){
+                    if(res.status=='success'){
+                        leftCoinNum = res.coin;
+                        $('.leftCoinNum').html(leftCoinNum);
+                        $('#loading2').css('display','none');
+                        $('#loading2 .m-loading').html('');
+                        $('.cpm-bets-close').click();
+                        $('#buySuccess').removeClass('cpm-hide');
+                    }else{
+                        $('#loading2 .m-loading').html('<p>'+res.msg+'</p>');
+                        setTimeout(function(){
+                            $('.cpm-bets-close').click();
+                            $('#loading2').css('display','none');
+                        },1500)
+                    }
+                }
+            })
+        }
+    });
+
+    //关闭选择
+    $('.cpm-bets-close').click(function(){
+        $('.cpm-odds-list>.item').removeClass('active');
+        $('#footerBet').addClass('cpm-hide').removeClass('cpm-bets-toolbar');
+    })
+
+    //选择金额
+    $('#cpm-dropdown__gq').click(function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+        }else{
+            $(this).addClass('active');
+        }
+    })
+    $('#cpm-dropdown__gq li').click(function(){
+        $('#cpm-dropdown__gq span').html($(this).html());
+        $('input[name="cost"]').val($(this).attr('data-value'));
+        updateCost();
+        $('#cpm-dropdown__gq').removeClass('active');
+        return false;   //必须加上 阻止事件冒泡
+    })
+
+    //点击继续投注
+    $('#goBuyBtn').click(function(){
+        $('#buySuccess').addClass('cpm-hide');
+    })
+
+    //获取竞猜记录
+    var page = 1;
+    var hasMore = true;
+    $(window).ready(function(){
+        getMatchRecordList();
+        $(window).scroll(function(){
+            totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+            if ($(document).height() <= totalheight){
+                getMatchRecordList();
+                console.log($(window).height());
+            }
+        })
+
+    });
+
+    function getMatchRecordList(){
+        if(hasMore){
+            $.ajax({
+                url:"<{:U('getMatchRecordList')}>",
+                data:{
+                    p:page,
+                    'id':matchInfo.id
+                },
+                beforeSend:function(){
+                    $('#loading2').css('display','block');
+                    $('#loading2 .m-loading').html('<i class="i-loading"></i>');
+                },
+                success:function(data){
+                    hasMore = false;
+                    var url = "<{:U('match')}>";
+                    if(data.status=='success'){
+                        if(data.num>0){
+                            var html = '';
+                            $.each(data.list,function(i,vo){
+                                html += '<li><ul style="margin-top: 5px;"><li class="rBg"><a href="#"><img src="'+vo.headimgurl+'" border="0"><s></s></a></li><li class="rInfo"><a href="">'+vo.nickname+'</a><br><span class="arial orange">'+vo.option+'</span><em>'+vo.cost+'</em></li><i></i></ul></li>';
+                            })
+                            $('#matchRecordList').append(html);
+                            if(data.num==10){
+                                hasMore = true;
+                            }
+                        }else {
+                            $('#loading2 .m-loading').html('<p>没有数据了</p>');
+                        }
+                        page = data.page;
+                    }else {
+                        $('#loading2 .m-loading').html('<p>系统错误</p>');
+                    }
+                },
+                'complete':function(){
+                    setTimeout(function(){
+                        $('#loading2').css('display','none');
+                    },500)
+                }
+            })
+        }else {
+            $('#loading2 .m-loading').html('<p>没有数据了</p>');
+            setTimeout(function(){
+                $('#loading2').css('display','none');
+            },1500);
+        }
+    }
+
+</script>
 </body>
 </html>

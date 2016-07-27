@@ -1,3 +1,14 @@
+<header class="header">
+<nav class="cpm-main-nav nav__entry">
+    <div class="bd">
+        <a href="<{:U('hot')}>" <eq name="active" value="hot" >class="active"</eq> >
+            <span>热门</span></a>
+        <a href="<{:U('index')}>" <eq name="active" value="all" >class="active"</eq> >
+            <span>全部</span></a>
+        <a href="<{:U('finish')}>" <eq name="active" value="finish" >class="active"</eq> >
+            <span>已结束</span></a>
+    </div>
+</nav>
 <div class="user-info">
     <div class="avatar avatar__user">
         <img src="<{$Think.session.headimgurl}>" alt="">
@@ -34,3 +45,4 @@
         </li>
     </ul>
 </div>
+</header>

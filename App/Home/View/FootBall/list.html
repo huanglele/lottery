@@ -1,10 +1,288 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" style="font-size:120px;">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <title>彩票</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/css/football.css" rel="stylesheet"/>
+    <script src="__PUBLIC__/js/jquery-2.1.1.min.js" type="text/javascript"></script>
 </head>
 <body>
+<section>
+    <!--头部信息-->
+    <header class="header">
+        <nav class="cpm-main-nav nav__entry">
+            <div class="bd">
 
+                <a class="active">
+                    <span>热门</span></a>
+                <a class="">
+                    <span>全部</span></a>
+                <a class="">
+                    <span>已结束</span></a>
+            </div>
+        </nav>
+        <div class="user-info">
+            <div class="avatar avatar__user">
+                <img src="<{$Think.session.headimgurl}>" alt="">
+            </div>
+            <ul class="cpm-hide">
+                <li class="user-list_item">
+                    <span>金豆：</span>
+                    <span class="value coinNum"><{$session.coin}></span>
+                    <a>充值</a>
+                </li>
+                <li class="user-list_item">
+                    <i class="i i-limit"></i>
+                    <span>限时抢兑</span></li>
+                <li class="user-list_item">
+                    <i class="i i-star i-star__user"></i>
+                    <span>我关注的</span>
+                    <span class="cpm-hide">0</span>
+                </li>
+                <li class="user-list_item">
+                    <i class="i i-record"></i>
+                    <span>竞猜记录</span>
+                </li>
+                <li class="user-list_item">
+                    <i class="i i-quest"></i>
+                    <span>玩法说明</span>
+                </li>
+                <li class="user-list_item cpm-hide">
+                    <i class="i i-download"></i>
+                    <span>APP下载</span>
+                </li>
+                <li class="user-list_item">
+                    <i class="i i-home"></i>
+                    <span>返回娱乐大厅</span>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!--列表-->
+    <div class="main main__multi cpm-g-single">
+        <div style="margin: .35rem auto .13rem"></div>
+        <div class="cpm-slider">
+            <div class="cpm-guess-list" data-reactid=".d.4:1.1.0"
+                 style="width: 2000px; transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);">
+                <div class="cpm-guess-item" style="float:left;width:400px;vertical-align:top;">
+                    <div class="guess-status">
+                        <i class="i i-star"></i>
+                    </div>
+                    <div class="guess-hd">
+                        <div class="guess-hd_item" data-pe="tap:_lg.ball.goMatch" data-matchid="9509257">
+                            <h4 class="cate">国际冠军杯</h4>
+                            <p class="meta">明天 20:00</p></div>
+                    </div>
+                    <div class="guess-bd">
+                        <div class="cpm-odds-list">
+                            <div class="item" data-pe="tap:lg.ball.select" data-matchid="9509257" data-index="0"
+                                 data-playname="spf">
+                                <span class="team-logo">
+                                    <img src="//888.qq.com/new_images/ver1.2/newdata/teamimg/betm007_team_img27_c.gif" class="logo"></span><a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
+                                <strong class="title">曼联</strong>
+                                <div class="desc">
+                                    <span class="info">胜</span>
+                                    <span class="odds">2.10</span>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="item" data-pe="tap:lg.ball.select" data-playname="spf">
+                                <a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
+                                    <strong class="title">平</strong>
+                                    <div class="desc">
+                                        <span class="info">平</span>
+                                        <span class="odds">3.25</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item" data-pe="tap:lg.ball.select">
+                                <span class="team-logo">
+                                    <img src="//888.qq.com/new_images/ver1.2/newdata/teamimg/betm007_team_img99_c.gif" class="logo">
+                                </span>
+                                <a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
+                                    <strong class="title">多特蒙德</strong>
+                                    <div class="desc">
+                                        <span class="info">胜</span>
+                                        <span class="odds">2.95</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="guess-ft">
+                        <p class="team-follow">5488人竞猜</p>
+                        <div class="cpm-hide">
+                            <i class="i-question">?</i>
+                            <span>封盘中</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="next"></a>
+        </div>
+
+        <div class="cpm-slider">
+            <div class="cpm-guess-list" data-reactid=".d.4:1.1.0"
+                 style="width: 2000px; transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);">
+                <div class="cpm-guess-item" style="float:left;width:400px;vertical-align:top;">
+                    <div class="guess-status">
+                        <i class="i i-star"></i>
+                    </div>
+                    <div class="guess-hd">
+                        <div class="guess-hd_item" data-pe="tap:_lg.ball.goMatch" data-matchid="9509257">
+                            <h4 class="cate">国际冠军杯</h4>
+                            <p class="meta">明天 20:00</p></div>
+                    </div>
+                    <div class="guess-bd">
+                        <div class="cpm-odds-list">
+                            <div class="item" data-pe="tap:lg.ball.select" data-matchid="9509257" data-index="0"
+                                 data-playname="spf">
+                                <span class="team-logo">
+                                    <img src="//888.qq.com/new_images/ver1.2/newdata/teamimg/betm007_team_img27_c.gif" class="logo"></span><a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
+                                <strong class="title">曼联</strong>
+                                <div class="desc">
+                                    <span class="info">胜</span>
+                                    <span class="odds">2.10</span>
+                                </div>
+                            </a>
+                            </div>
+                            <div class="item" data-pe="tap:lg.ball.select" data-playname="spf">
+                                <a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
+                                    <strong class="title">平</strong>
+                                    <div class="desc">
+                                        <span class="info">平</span>
+                                        <span class="odds">3.25</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="item" data-pe="tap:lg.ball.select">
+                                <span class="team-logo">
+                                    <img src="//888.qq.com/new_images/ver1.2/newdata/teamimg/betm007_team_img99_c.gif" class="logo">
+                                </span>
+                                <a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
+                                    <strong class="title">多特蒙德</strong>
+                                    <div class="desc">
+                                        <span class="info">胜</span>
+                                        <span class="odds">2.95</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="guess-ft">
+                        <p class="team-follow">5488人竞猜</p>
+                        <div class="cpm-hide">
+                            <i class="i-question">?</i>
+                            <span>封盘中</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0);" class="next"></a>
+        </div>
+
+        <footer class="footer cpm-fixed cpm-fixed-b">
+            <div class="cpm-hide" id="footerBet">
+                <div class="hd">
+                    <span class="counts" data-pe="tap:lg.ball.recharge">
+                      <i class="i i-bean"></i>
+                      <span class="coinNum"><{$session.coin}></span>
+                      <span class="plus"></span>
+                    </span>
+
+                    <div class="result">猜对可以赢</span>
+                        <span class="val" style="overflow:auto;max-width:none;">金豆</span></div>
+                    <i class="cpm-bets-close"></i>
+                </div>
+                <div class="bd">
+                    <div class="bets-list bets-list__multiple" id="divScroll" data-reactid=".d.7.0.2.0"
+                         style="overflow: hidden; height: 50px;">
+                        <ul data-reactid=".d.7.0.2.0.0"
+                            style="transition-property: transform; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+                            <li class="bets-list_item">
+                                <span>曼联VS多特蒙德</span>
+                                <span class="bets-list_type">主胜（2.10）</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cpm-btn-group">
+                        <div class="cpm-bets-options">
+                            <div class="layout-col">
+                                <div class="cpm-dropdown cpm-dropdown__gq" id="cpm-dropdown__gq">
+                                    <a href="javascript:void(0);" class="dd-toggle">
+                                        <span>投200金豆</span>
+                                        <i class="caret"></i>
+                                    </a>
+                                    <ul class="dd-menu">
+                                        <li>投2000金豆</li>
+                                        <li>投1000金豆</li>
+                                        <li>投500金豆</li>
+                                        <li>投200金豆</li>
+                                        <li>投100金豆</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0);" class="cpm-btn cpm-btn-large cpm-btn-primary"
+                           data-pe="tap:lg.ball.xd">确认下注</a></div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</section>
 </body>
+<script>
+    //显示头像
+    $('.user-info').click(function () {
+        var ul = $('.user-info>ul');
+        if (ul.hasClass('cpm-hide')) {
+            ul.removeClass('cpm-hide').addClass('user-list');
+        } else {
+            ul.removeClass('user-list').addClass('cpm-hide');
+        }
+    });
+
+    //点击选择球队
+    $('.cpm-odds-list>.item').click(function(){
+        var item = $(this);
+        if(item.hasClass('active')){
+            $('.cpm-odds-list>.item').removeClass('active');
+            //取消选择的球队
+            $('#footerBet').addClass('cpm-hide').removeClass('cpm-bets-toolbar');   //隐藏footer下注
+        }else{
+            $('.cpm-odds-list>.item').removeClass('active');
+            //选中球队
+            item.addClass('active');
+            chooseTeam();
+        }
+    })
+
+    //选择中球队
+    function chooseTeam(){
+        $('#footerBet').addClass('cpm-bets-toolbar').removeClass('cpm-hide');
+    }
+
+    //关闭选择
+    $('.cpm-bets-close').click(function(){
+        $('.cpm-odds-list>.item').removeClass('active');
+        $('#footerBet').addClass('cpm-hide').removeClass('cpm-bets-toolbar');
+    })
+
+    //选择金额
+    $('#cpm-dropdown__gq').click(function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+        }else{
+            $(this).addClass('active');
+        }
+    })
+    $('#cpm-dropdown__gq li').click(function(){
+        $('#cpm-dropdown__gq span').html($(this).html());
+        $('#cpm-dropdown__gq').removeClass('active');
+        return false;   //必须加上 阻止事件冒泡
+    })
+</script>
 </html>

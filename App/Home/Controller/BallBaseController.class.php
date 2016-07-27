@@ -9,6 +9,8 @@
 namespace Home\Controller;
 
 //球赛基础类
+use Think\Model;
+
 class BallBaseController extends CommonController
 {
 
@@ -97,18 +99,30 @@ class BallBaseController extends CommonController
                     $currentRate = $rate[$option];
                     if($currentRate>0){
                         $M->startTrans();
+                        //修改用户剩余金豆数量
                         $r1 = M('user')->where(array('id'=>$this->uid))->setDec('coin',$cost);
 
+                        //添加竞猜记录
                         $da2['mid'] = $matchId;
                         $da2['uid'] = $this->uid;
                         $da2['option'] = $RecordOptionArr[$option];
                         $da2['cost'] = $cost;
                         $da2['reward'] = intval($cost*$currentRate);
                         $da2['status'] = 1;
+                        $da2['time'] = date('Y-m-d H:i:s');
                         $r2 = M('match_record')->add($da2);
 
+                        //修改竞猜次数
                         $r3 = $M->where(array('id'=>$matchId))->setInc('times',1);
-                        if($r1 && $r2 && $r3){
+
+                        //添加用户金豆消费记录
+                        $da4['uid'] = $this->uid;
+                        $da4['amount'] = $cost;
+                        $da4['time'] = date('Y-m-d H:i:s');
+                        $da4['type'] = '-1';
+                        $da4['note'] = '竞猜记录ID'.$r2;
+                        $r4 = M('coin')->add($da4);
+                        if($r1 && $r2 && $r3 && $r4){
                             $M->commit();
                             $res['status'] = 'success';
                             $res['coin'] = $userInfo['coin']-$cost;
@@ -131,7 +145,7 @@ class BallBaseController extends CommonController
         $this->ajaxReturn($res);
     }
 
-    //获取比赛竞猜记录
+    //获取一场比赛竞猜记录
     public function getMatchRecordList(){
         $p = I('get.p');
         $mid = I('get.id');
@@ -167,4 +181,61 @@ class BallBaseController extends CommonController
         return $data;
     }
 
+    //我的竞猜记录列表
+    public function myGuess(){
+        if(IS_AJAX){
+            $p = I('get.p');
+            $sort = I('get.dataSort');
+            $map['uid'] = $this->uid;
+            if($sort=='win'){
+                $map['status'] = 3;
+            }elseif($sort == 'wait'){
+                $map['status'] = 1;
+            }
+
+            $list = $this->getData('match_record',$map,'id desc','id,mid,option,cost,reward,time,status');
+            $num = count($list);
+            $data = array();
+            if($num){
+                //查询比赛信息
+                $matchIdStr = '(';
+                foreach($list as $v){
+                    $matchIdStr .= $v['mid'].',';
+                }
+                $matchIdStr = rtrim($matchIdStr,',').')';
+                $sql = 'select m.id,m.name as m_name,th.name as host_name,tg.name as guess_name FROM `match` m RIGHT JOIN `team` th ON th.id = m.host_id RIGHT JOIN `team` tg ON tg.id = m.guess_id WHERE m.id IN '.$matchIdStr.'ORDER BY `m`.`id` DESC';
+                $Model = new Model();
+                $matchInfoTemp = $Model->query($sql);
+                $matchInfo = array();
+                foreach($matchInfoTemp as $v){
+                    $matchInfo[$v['id']] = $v;
+                }
+                $matchResult = C('MatchResult');
+                $RecordStatus = C('RecordStatus');
+                foreach($list as $v){
+                    $i = $v;
+                    $i['vs'] = $matchInfo[$v['mid']]['host_name'].' VS '.$v[$list['mid']]['guess_name'];
+                    $i['name'] = $matchInfo[$v['mid']]['m_name'];
+                    $i['option'] = $matchResult[$v['option']];
+                    $i['status'] = $RecordStatus[$v['status']];
+                    $data[] = $i;
+                }
+            }
+            $ret['status'] = 'success';
+            $ret['num'] = $num;
+            $ret['list'] = $data;
+            if($num==10)  $p++;
+            $ret['page'] = $p;
+            $this->ajaxReturn($ret);
+        }else{
+            $this->display('Ball/myGuess');
+        }
+    }
+
+    //竞猜详情页面
+    public function record()
+    {
+        $id = I('get.id');
+        $info = M('user');
+    }
 }
