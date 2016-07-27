@@ -54,6 +54,7 @@
                 <th>类型</th>
                 <th>前台显示</th>
                 <th>开始时间</th>
+                <th>参与总人次</th>
                 <th>结果</th>
                 <th>操作</th>
             </tr>
@@ -82,6 +83,7 @@
                     <td>
                         <{$vo.b_time}>
                     </td>
+                    <td><{$vo.times}></td>
                     <td><{$MatchResult[$vo['result']]}></td>
                     <td>
                         <a href="<{:U('edit')}>?id=<{$vo.id}>" >编辑</a>

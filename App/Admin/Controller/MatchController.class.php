@@ -39,7 +39,7 @@ class MatchController extends CommonController
         $this->assign('name',$name);
 
         $Tool = new CommonController();
-        $list = $Tool->getList('match',$map,'id desc','id,name,host_id,guess_id,type,b_time,result,is_show');
+        $list = $Tool->getList('match',$map,'id desc','id,name,host_id,guess_id,type,b_time,result,is_show,times');
         $teamIdArr[] = 0;
         foreach($list as $v){
             if(!in_array($v['host_id'],$teamIdArr)){
@@ -148,15 +148,14 @@ class MatchController extends CommonController
         $result = M('match')->where(array('id'=>$id))->getField('result');
         if($result){
             if($s==$result){$this->error('请修改为不同的状态');die;}
-            if(in_array($result,array(1,2))){   //简单更新
+            if($s==2){   //简单更新
                 if(M('match')->where(array('id'=>$id))->setField('result',$s)){
                     $this->success('更新成功');
                 }else{
                     $this->error('更新失败');
                 }
-            }else if(in_array($result,array(3,4,5))){   //开奖
+            }else if(in_array($s,array(3,4,5))){   //开奖
                 if(M('match')->where(array('id'=>$id))->setField('result',$s)){
-                    ignore_user_abort(true);
                     $this->lottery($id);
                     $this->success('更新成功');
                 }else{
@@ -169,14 +168,65 @@ class MatchController extends CommonController
     }
 
     /**
+     * 开奖
      * @param $id match表id
      * @param bool|false $result 开奖结果 对应的是match表result字段的值
      */
-    private function lottery($id,$result=false){
+    private function lottery($id,$result=false)
+    {
         if(!$result){
             $result = M('match')->where(array('id'=>$id))->getField('result');
         }
+        //直接修改竞猜错误的用户的记录为失利
+        $map['mid'] = $id;
+        $map['status'] = 1;
+        $map['option'] = array('neq',$result);
+        $da['status'] = 2;
+        M('match_record')->where($map)->save($da);
+        $this->lotteryLuck($id,$result);
+    }
 
+    /**
+     * 开奖 处理猜对了的用户记录
+     * @param $id match表id
+     * @param bool|false $result 开奖结果 对应的是match表result字段的值
+     */
+    private function lotteryLuck($id,$result=false)
+    {
+        ignore_user_abort(true);
+        if(!$result){
+            $result = M('match')->where(array('id'=>$id))->getField('result');
+        }
+        $map['mid'] = $id;
+        $map['status'] = 1;
+        $map['option'] = $result;
+        $luckRecords = M('match_record')->where($map)->order('uid desc')->field('id,uid,reward')->select();
+        if(count($luckRecords)){
+            $data = array();
+            foreach($luckRecords as $v){
+                $data[$v['uid']]['all'] || $data[$v['uid']]['all'] = 0;
+                $data[$v['uid']]['all'] += $v['reward'];
+                $r['uid'] = $v['uid'];
+                $r['amount'] = $v['reward'];
+                $r['time'] = date('Y-m-d H:i:s');
+                $r['type'] = 2;
+                $r['note'] = '竞猜记录ID'.$v['id'];
+                $data[$v['uid']]['coin'][] = $r;
+                $data[$v['uid']]['recordIds'][] = $v['id'];
+            }
+            $User = M('user');
+            $Coin = M('Coin');
+            foreach($data as $uid => $da){
+                $User->where(array('id='.$uid))->setInc('coin',$da['all']);
+                $Coin->addAll($da['coin']);
+                M('match_record')->where(array('id'=>array('in',$da['recordIds'])))->setField('status',3);
+            }
+        }
+    }
+
+    public function test(){
+      $id = I('get.id');
+      $this->lotteryLuck($id);
     }
 
 }

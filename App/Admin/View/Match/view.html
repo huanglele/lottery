@@ -146,7 +146,7 @@
                                     <select name="result" class="form-control">
                                         <volist name="MatchResult" id="v">
                                             <gt name="key" value="$info.result">
-                                                <option name="<{$key}>" ><{$v}></option>
+                                                <option value="<{$key}>" ><{$v}></option>
                                             </gt>
                                         </volist>
                                     </select>
@@ -155,6 +155,7 @@
                         </div>
                         <div class="col-xs-2">
                             <div class="form-group">
+                                <input type="hidden" name="id" value="<{$info.id}>">
                                 <button type="button" id="btnSend" name="id" class="btn btn-danger btn-block" value="<{$info.id}>">更新</button>
                             </div>
                         </div>
