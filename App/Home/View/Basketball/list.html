@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" style="font-size:120px;">
 <head>
-    <title>彩票</title>
+    <title>篮球 彩票</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
@@ -11,55 +11,8 @@
 <body>
 <section>
     <!--头部信息-->
-    <header class="header">
-        <nav class="cpm-main-nav nav__entry">
-            <div class="bd">
+    <include file="Ball/header" />
 
-                <a class="active">
-                    <span>热门</span></a>
-                <a class="">
-                    <span>全部</span></a>
-                <a class="">
-                    <span>已结束</span></a>
-            </div>
-        </nav>
-        <div class="user-info">
-            <div class="avatar avatar__user">
-                <img src="<{$Think.session.headimgurl}>" alt="">
-            </div>
-            <ul class="cpm-hide">
-                <li class="user-list_item">
-                    <span>金豆：</span>
-                    <span class="value coinNum"><{$session.coin}></span>
-                    <a>充值</a>
-                </li>
-                <li class="user-list_item">
-                    <i class="i i-limit"></i>
-                    <span>限时抢兑</span></li>
-                <li class="user-list_item">
-                    <i class="i i-star i-star__user"></i>
-                    <span>我关注的</span>
-                    <span class="cpm-hide">0</span>
-                </li>
-                <li class="user-list_item">
-                    <i class="i i-record"></i>
-                    <span>竞猜记录</span>
-                </li>
-                <li class="user-list_item">
-                    <i class="i i-quest"></i>
-                    <span>玩法说明</span>
-                </li>
-                <li class="user-list_item cpm-hide">
-                    <i class="i i-download"></i>
-                    <span>APP下载</span>
-                </li>
-                <li class="user-list_item">
-                    <i class="i i-home"></i>
-                    <span>返回娱乐大厅</span>
-                </li>
-            </ul>
-        </div>
-    </header>
     <!--列表-->
     <div class="main main__multi cpm-g-single">
         <div style="margin: .35rem auto .13rem"></div>

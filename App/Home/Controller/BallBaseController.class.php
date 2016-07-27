@@ -326,10 +326,11 @@ class BallBaseController extends CommonController
         }
     }
 
-    //竞猜详情页面
-    public function record()
-    {
-        $id = I('get.id');
-        $info = M('user');
+
+    //显示球赛说明
+    public function help(){
+        $value = readConf('matchHelpDoc');
+        $this->assign('value',$value);
+        $this->display('Ball/help');
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" style="font-size:120px;">
 <head>
-    <title>足球·彩票</title>
+    <title>篮球·彩票</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
@@ -18,6 +18,24 @@
         .cpm-guess-item{
             float:left;width:400px;vertical-align:top;
         }
+
+        .cpm-main-nav .active {
+            color: #ff7962;
+        }
+        .cpm-main-nav .active span:after {
+            background-color: #f9664d;
+        }
+        .cpm-odds-list .cpm-btn.active, .cpm-odds-list .active .cpm-btn {
+            background-color: #f9664d;
+        }
+        .cpm-bets-toolbar .cpm-btn-primary {
+            background-color: #f9664d;
+            border-color: #f9664d;
+            color: #fff;
+        }
+        .cpm-bets-toolbar .val{
+            color: #f9664d;
+        }
     </style>
 </head>
 <body>
@@ -28,7 +46,7 @@
 </div>
 <section class="cpm-content cpm-fixed-hd show-recommend">
     <!--头部信息-->
-    <include file="Football/header" />
+    <include file="Ball/header" />
 
     <empty name="data">
         <!--没有赛事数据-->
@@ -91,9 +109,6 @@
                                                         <div class="odds-list_item">
                                                             <p class="info">主胜</p>
                                                             <p class="odds"><{$vo.rate.win}></p></div>
-                                                        <div class="odds-list_item">
-                                                            <p class="info">平</p>
-                                                            <p class="odds"><{$vo.rate.draw}></p></div>
                                                         <div class="odds-list_item">
                                                             <p class="info">客胜</p>
                                                             <p class="odds"><{$vo.rate.lose}></p></div>
@@ -221,7 +236,7 @@
                         if(data.num>0){
                             var html = '';
                             $.each(data.list,function(i,vo){
-                                html += '<div class="tab-content tab__league"><div class="mod mod-fold"><div class="mod-hd"><h4 class="mod-hd_title"><span>'+vo.name+'</span><span class="time">'+vo.b_time+'</span></h4></div><div class="main-bd"><div class="tab-content tab__league"><div class="mod-bd"><div class="league"><ul class="league-list"><a href="'+url+'?id='+vo.id+'"><li class="league-item"><div class="item-info game-status"><p class="game-time">'+vo.name+'</p><p class="game-state">'+vo.result+'</p><!--<i class="i i-star"></i>--></div><div class="item-info team-info"><div class="team"><span class="team-logo"><img src="'+vo.host_icon+'"class="logo"></span><span class="team-name">'+vo.host_name+'</span><span class="cpm-hide"></span><span class="team-score"></span></div><div class="team"><span class="team-logo"><img src="'+vo.guess_icon+'"class="logo"></span><span class="team-name">'+vo.guess_name+'</span><span class="team-score"></span></div><p class="team-follow"><span class="num">'+vo.times+'</span><span>人次竞猜</span></p></div><div class="item-info odds-list"><div class="odds-list_item"><p class="info">主胜</p><p class="odds">'+vo.rate.win+'</p></div><div class="odds-list_item"><p class="info">平</p><p class="odds">'+vo.rate.draw+'</p></div><div class="odds-list_item"><p class="info">客胜</p><p class="odds">'+vo.rate.lose+'</p></div></div></li></a></ul></div></div></div></div></div></div>';
+                                html += '<div class="tab-content tab__league"><div class="mod mod-fold"><div class="mod-hd"><h4 class="mod-hd_title"><span>'+vo.name+'</span><span class="time">'+vo.b_time+'</span></h4></div><div class="main-bd"><div class="tab-content tab__league"><div class="mod-bd"><div class="league"><ul class="league-list"><a href="'+url+'?id='+vo.id+'"><li class="league-item"><div class="item-info game-status"><p class="game-time">'+vo.name+'</p><p class="game-state">'+vo.result+'</p><!--<i class="i i-star"></i>--></div><div class="item-info team-info"><div class="team"><span class="team-logo"><img src="'+vo.host_icon+'"class="logo"></span><span class="team-name">'+vo.host_name+'</span><span class="cpm-hide"></span><span class="team-score"></span></div><div class="team"><span class="team-logo"><img src="'+vo.guess_icon+'"class="logo"></span><span class="team-name">'+vo.guess_name+'</span><span class="team-score"></span></div><p class="team-follow"><span class="num">'+vo.times+'</span><span>人次竞猜</span></p></div><div class="item-info odds-list"><div class="odds-list_item"><p class="info">主胜</p><p class="odds">'+vo.rate.win+'</p></div><div class="odds-list_item"><p class="info">客胜</p><p class="odds">'+vo.rate.lose+'</p></div></div></li></a></ul></div></div></div></div></div></div>';
                             })
                             $('#matchList').append(html);
                             if(data.num==10){

@@ -60,7 +60,7 @@ class TeamController extends CommonController
                     //对图片进行裁剪
                     $image = new \Think\Image();
                     $image->open('./upload/'.$data['icon']);
-                    $image->thumb(51,34,6)->save('./upload/'.$data['icon']);
+                    $image->thumb(60,60,6)->save('./upload/'.$data['icon']);
                 }else{
                     $this->error($upload->getError());
                 }

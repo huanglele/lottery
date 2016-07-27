@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" style="font-size:120px;">
 <head>
-    <title>足球·彩票</title>
+    <title>篮球·彩票</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
@@ -54,7 +54,7 @@
                                                     <div class="sc-pitch">
                                                         <div class="sc-pitch-bg-wrapper">
                                                             <!-- normal -->
-                                                            <img data-weather="normal" class="sc-pitch-background sc-normal" src="//ls.betradar.com/ls/livescore/assets/qqlottery/sportcenter16/images/lmt/match-pitch-good.jpg" style="top: 0px;">
+                                                            <img data-weather="normal" class="sc-pitch-background sc-normal" src="__PUBLIC__/images/basketballbg.jpg" style="top: 0px;">
                                                         </div>
                                                         <div class="sc-pitch-content">
                                                             <div class="sc-livematchtracker-content">
@@ -156,7 +156,7 @@
                                     </h4>
                                     <div class="cpm-guess-item">
                                         <div class="cpm-odds-list">
-                                            <div class="item" data-pe="win">
+                                            <div class="item option" data-pe="win">
                                                 <div>
                                                     <div class="item-hd">
                                                         <strong class="item-title"><{$info.host_info.name}></strong>
@@ -180,21 +180,9 @@
                                             <div class="item" data-pe="draw">
                                                 <div>
                                                     <strong class="item-title item-title__vs">VS</strong>
-                                                    <div class="item-desc">
-                                                        <strong class="title">平</strong>
-                                                        <p class="odds">
-                                                            <span>&nbsp;</span>
-                                                            <span><{$info.rate.draw}></span></p>
-                                                    </div>
-                                                    <div class="game-progress">
-                                                        <div class="game-progress_bar" style="width:<{$record.draw}>%;"></div>
-                                                    </div>
-                                                    <p class="game-progress_desc">
-                                                        <span><{$record.draw}></span>
-                                                        <span>%人竞猜</span></p>
                                                 </div>
                                             </div>
-                                            <div class="item" data-pe="lose">
+                                            <div class="item option" data-pe="lose">
                                                 <div>
                                                     <div class="item-hd">
                                                         <strong class="item-title"><{$info.guess_info.name}></strong>
@@ -375,6 +363,24 @@
                 em {
                     font-style: normal;
                 }
+
+                .cpm-main-nav .active {
+                    color: #ff7962;
+                }
+                .cpm-main-nav .active span:after {
+                    background-color: #f9664d;
+                }
+                .cpm-odds-list .cpm-btn.active, .cpm-odds-list .active .cpm-btn,.game-mod .active {
+                    background-color: #f9664d;
+                }
+                .cpm-bets-toolbar .cpm-btn-primary {
+                    background-color: #f9664d;
+                    border-color: #f9664d;
+                    color: #fff;
+                }
+                .cpm-bets-toolbar .val{
+                    color: #f9664d;
+                }
             </style>
             <ul class="cpm-game-mod_bd recordCon" id="matchRecordList">
             </ul>
@@ -400,7 +406,7 @@
     }
 
     //点击选择球队
-    $('.cpm-odds-list>.item').click(function(){
+    $('.cpm-odds-list>.option').click(function(){
         var item = $(this);
         if(item.hasClass('active')){
             $('.cpm-odds-list>.item').removeClass('active');

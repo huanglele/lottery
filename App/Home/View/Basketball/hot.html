@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN" style="font-size:120px;">
 <head>
-    <title>足球·彩票</title>
+    <title>篮球·彩票</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
     <link href="__PUBLIC__/css/football.css" rel="stylesheet"/>
     <script src="__PUBLIC__/js/jquery-2.1.1.min.js" type="text/javascript"></script>
     <style>
-        .main__multi {
-            padding-top: 0;
-            margin-bottom: 150px;
+        .cpm-main-nav .active {
+            color: #ff7962;
         }
-        .cpm-guess-list{
-            width: 2000px; transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);
+        .cpm-main-nav .active span:after {
+            background-color: #f9664d;
         }
-        .cpm-guess-item{
-            float:left;width:400px;vertical-align:top;
+        .cpm-odds-list .cpm-btn.active, .cpm-odds-list .active .cpm-btn {
+            background-color: #f9664d;
+        }
+        .cpm-bets-toolbar .cpm-btn-primary {
+            background-color: #f9664d;
+            border-color: #f9664d;
+            color: #fff;
+        }
+        .cpm-bets-toolbar .val{
+            color: #f9664d;
         }
     </style>
 </head>
@@ -28,7 +35,7 @@
 </div>
 <section>
     <!--头部信息-->
-    <include file="Football/header" />
+    <include file="Ball/header" />
 
     <empty name="data">
         <!--没有赛事数据-->
@@ -68,7 +75,7 @@
                         </script>
                         <div class="guess-bd">
                             <div class="cpm-odds-list">
-                                <div class="item" data-pe="win" data-matchid="<{$vo.id}>">
+                                <div class="item option" data-pe="win" data-matchid="<{$vo.id}>">
                                     <span class="team-logo">
                                         <img src="<{$vo.host_icon}>" class="logo">
                                     </span>
@@ -81,15 +88,9 @@
                                     </a>
                                 </div>
                                 <div class="item" data-pe="draw" data-matchid="<{$vo.id}>">
-                                    <a href="javascript:void(0);" class="cpm-btn cpm-btn-default">
-                                        <strong class="title">平</strong>
-                                        <div class="desc">
-                                            <span class="info">平</span>
-                                            <span class="odds"><{$vo.rate.draw}></span>
-                                        </div>
-                                    </a>
+
                                 </div>
-                                <div class="item" data-pe="lose" data-matchid="<{$vo.id}>">
+                                <div class="item option" data-pe="lose" data-matchid="<{$vo.id}>">
                                 <span class="team-logo">
                                     <img src="<{$vo.guess_icon}>" class="logo">
                                 </span>
@@ -112,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="javascript:void(0);" class="next"></a>
+                <a href="<{:match}>?id=<{$vo.id}>" class="next"></a>
             </div>
             </volist>
 
@@ -246,7 +247,7 @@
     });
 
     //点击选择球队
-    $('.cpm-odds-list>.item').click(function(){
+    $('.cpm-odds-list>.option').click(function(){
         var item = $(this);
         if(item.hasClass('active')){
             $('.cpm-odds-list>.item').removeClass('active');

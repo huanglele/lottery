@@ -224,9 +224,15 @@ class MatchController extends CommonController
         }
     }
 
-    public function test(){
-      $id = I('get.id');
-      $this->lotteryLuck($id);
+    public function help(){
+        if(isset($_POST['submit'])){
+            $value = I('post.value');
+            writeConf('matchHelpDoc',$value);
+        }else{
+            $value = readConf('matchHelpDoc');
+        }
+        $this->assign('value',$value);
+        $this->display();
     }
 
 }
