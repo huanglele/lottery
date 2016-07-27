@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="font-size:120px;">
+<head>
+    <title>足球·彩票</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/css/football.css" rel="stylesheet"/>
+    <script src="__PUBLIC__/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <style>
+        .main__multi {
+            padding-top: 0;
+            margin-bottom: 150px;
+        }
+        .cpm-guess-list{
+            width: 2000px; transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);
+        }
+        .cpm-guess-item{
+            float:left;width:400px;vertical-align:top;
+        }
+    </style>
+</head>
+<body>
+<div class="m-loading-mod" id="loading2" style="display: none;">
+    <div class="m-loading">
+        <i class="i-loading"></i>
+    </div>
+</div>
+<section class="cpm-content cpm-fixed-hd show-recommend">
+    <!--头部信息-->
+    <include file="Football/header" />
+
+    <empty name="data">
+        <!--没有赛事数据-->
+        <div class="main main__finished">
+            <div class="mod-empty">
+                <i class="i-empty i-empty__future" ></i>
+                <div class="desc">
+                    <p>暂无赛事</p>
+                    <p class="sm">点击头像，返回大厅</p></div>
+            </div>
+            <div class="main-bd">
+                <div class="tab-content tab__league"></div>
+            </div>
+        </div>
+
+        <else />
+        <!--列表-->
+        <div class="main main__future" id="matchList">
+            <volist name="data" id="vo">
+                <div class="tab-content tab__league">
+                    <div class="mod mod-fold">
+                        <div class="mod-hd">
+                            <h4 class="mod-hd_title"><span><{$vo.name}></span><span class="time"><{$vo.b_time}></span></h4>
+                        </div>
+                        <div class="main-bd">
+                            <div class="tab-content tab__league">
+                                <div class="mod-bd">
+                                    <div class="league">
+                                        <ul class="league-list">
+                                            <a href="<{:U('match')}>?id=<{$vo.id}>">
+                                                <li class="league-item mod__finished league-seal">
+                                                    <div class="item-info game-status">
+                                                        <p class="game-state">
+                                                            <{$vo.result}>
+                                                        </p>
+                                                    </div>
+                                                    <div class="item-info team-info">
+                                                        <div class="team">
+                                                            <span class="team-logo">
+                                                                <img src="<{$vo.host_icon}>" class="logo">
+                                                            </span>
+                                                            <span class="team-name"><{$vo.host_name}></span>
+                                                            <span class="cpm-hide"></span>
+                                                            <span class="team-score"></span>
+                                                        </div>
+
+                                                        <div class="team">
+                                                            <span class="team-logo">
+                                                                <img src="<{$vo.guess_icon}>" class="logo">
+                                                            </span>
+                                                            <span class="team-name"><{$vo.guess_name}></span>
+                                                            <span class="team-score"></span>
+                                                        </div>
+
+                                                        <p class="team-follow">
+                                                            <span class="num"><{$vo.times}></span>
+                                                            <span>人次竞猜</span></p>
+                                                    </div>
+
+                                                    <div class="item-info review">回顾</div>
+                                                </li>
+                                            </a>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+            
+        </div>
+
+    </empty>
+
+</section>
+</body>
+<script>
+    leftCoinNum = '<{$Think.session.coin}>';
+    //显示头像
+    $('.user-info').click(function () {
+        var ul = $('.user-info>ul');
+        if (ul.hasClass('cpm-hide')) {
+            ul.removeClass('cpm-hide').addClass('user-list');
+        } else {
+            ul.removeClass('user-list').addClass('cpm-hide');
+        }
+    });
+
+    var page = 2;
+    var hasMore = true;
+    $(window).ready(function(){
+
+        $(window).scroll(function(){
+            totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+            if ($(document).height() <= totalheight){
+                getMatchList();
+                console.log($(window).height());
+            }
+        })
+
+    });
+
+    function getMatchList(){
+        if(hasMore){
+            $.ajax({
+                url:"<{:U('getMatchList')}>",
+                data:{
+                    p:page,
+                    'ac':'finish',
+                    'type':2
+                },
+                beforeSend:function(){
+                    $('#loading2').css('display','block');
+                    $('#loading2 .m-loading').html('<i class="i-loading"></i>');
+                },
+                success:function(data){
+                    hasMore = false;
+                    var url = "<{:U('match')}>";
+                    if(data.status=='success'){
+                        if(data.num>0){
+                            var html = '';
+                            $.each(data.list,function(i,vo){
+                                html += '<div class="tab-content tab__league"><div class="mod mod-fold"><div class="mod-hd"><h4 class="mod-hd_title"><span>'+vo.name+'</span><span class="time">'+vo.b_time+'</span></h4></div><div class="main-bd"><div class="tab-content tab__league"><div class="mod-bd"><div class="league"><ul class="league-list"><a href="'+url+'?id='+vo.id+'"><li class="league-item"><div class="item-info game-status"><p class="game-state">'+vo.result+'</p></div><div class="item-info team-info"><div class="team"><span class="team-logo"><img src="'+vo.host_icon+'"class="logo"></span><span class="team-name">'+vo.host_name+'</span><span class="cpm-hide"></span><span class="team-score"></span></div><div class="team"><span class="team-logo"><img src="'+vo.guess_icon+'"class="logo"></span><span class="team-name">'+vo.guess_name+'</span><span class="team-score"></span></div><p class="team-follow"><span class="num">'+vo.times+'</span><span>人次竞猜</span></p></div><div class="item-info review">回顾</div></li></a></ul></div></div></div></div></div></div>';
+                            })
+                            $('#matchList').append(html);
+                            if(data.num==10){
+                                hasMore = true;
+                            }
+                        }else {
+                            $('#loading2 .m-loading').html('<p>没有数据了</p>');
+                        }
+                        page = data.page;
+                    }else {
+                        $('#loading2 .m-loading').html('<p>系统错误</p>');
+                    }
+                },
+                'complete':function(){
+                    setTimeout(function(){
+                        $('#loading2').css('display','none');
+                    },1500)
+                }
+            })
+        }else {
+            $('#loading2 .m-loading').html('<p>没有数据了</p>');
+            setTimeout(function(){
+                $('#loading2').css('display','none');
+            },1500);
+        }
+    }
+
+
+</script>
+</html>
