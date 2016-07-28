@@ -9,6 +9,12 @@ class IndexController extends CommonController
 
     }
 
+    public function gift()
+    {
+        $map['status'] = 1;
+        $this->getData('gift',$map,'id desc');
+        $this->display('gift');
+    }
 
     public function test()
     {
