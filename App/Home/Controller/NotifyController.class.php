@@ -285,9 +285,9 @@ class NotifyController extends Controller
             ));
         $b3 = array('type'=>'view','name'=>'量子天地','url'=>'http://mp.weixin.qq.com/mp/getmasssendmsg?__biz=MzIxODM2MDM2Mw==&from=singlemessage&isappinstalled=0#wechat_webview_type=1&wechat_redirect');
         */
-        $b1 = array('type'=>'view','name'=>'足球','url'=>U('index/type',array('id'=>1),true,true));
-        $b2 = array('type'=>'view','name'=>'篮球','url'=>U('index/type',array('id'=>2),true,true));
-        $b3 = array('type'=>'view','name'=>'个人中心','url'=>U('user/index','',true,true));
+        $b1 = array('type'=>'view','name'=>'足球','url'=>U('football/hot','',true,true));
+        $b2 = array('type'=>'view','name'=>'篮球','url'=>U('basketball/hot','',true,true));
+        $b3 = array('type'=>'view','name'=>'兑换礼物','url'=>U('index/gift','',true,true));
         $b = array('button'=>array($b1,$b2,$b3));
         $m = json_encode($b,JSON_UNESCAPED_UNICODE);
         $accsee = getWxAccessToken();

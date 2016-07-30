@@ -31,7 +31,28 @@ class OrderController extends CommonController
         }
         $this->assign('status',$status);
         $this->getList('orders',$map,'id desc','id,gid,uid,status,create_time');
+        $this->assign('OrderStatus',C('OrderStatus'));
         $this->display('index');
+    }
+
+    public function view(){
+        $id = I('get.id',0,'number_int');
+        $info = M('orders')->find($id);
+        $this->assign('OrderStatus',C('OrderStatus'));
+        $this->assign('info',$info);
+        $this->display('view');
+    }
+
+    public function update(){
+        $id = I('post.id');
+        $status = I('post.status');
+        $data['id'] = $id;
+        $data['status'] = $status;
+        if(M('orders')->save($data)){
+            $this->success('操作成功');
+        }else{
+            $this->error('操作失败');
+        }
     }
 
 }

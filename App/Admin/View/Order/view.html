@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            兑换详情
+        </div>
+        <div class="panel panel-body">
+            <form action="<{:U('update')}>" method="post" enctype="multipart/form-data">
+                <!--球队名、球队类型、国家-->
+                <div class="row">
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">礼物ID</div>
+                                <input type="text" class="form-control" disabled="disabled" value="<{$info.id}>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <p class="form-control-static">
+                            <a href="<{:U('gift/view')}>?id=<{$info.id}>" target="_blank" >查看礼物</a>
+                        </p>
+                    </div>
+
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">申请时间</div>
+                                <input type="text" class="form-control" disabled="disabled" value="<{$info.create_time}>" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">收货人</div>
+                                <input type="text" class="form-control" disabled="disabled" value="<{$info.user_name}>" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">联系方式</div>
+                                <input type="text" class="form-control" disabled="disabled" value="<{$info.user_phone}>" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">收货地址</div>
+                                <input type="text" class="form-control" disabled="disabled" value="<{$info.user_address}>" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon">状态</div>
+                                <select name="status" class="form-control">
+                                    <volist name="OrderStatus" id="vo">
+                                        <option value="<{$key}>"><{$vo}></option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <div class="form-group">
+                            <input type="hidden" value="<{$info.id}>" name="id">
+                            <button type="submit" name="submit" value="update" class="btn btn-success btn-block">修改</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(window).ready(function(){
+        $('select[name="status"]').val('<{$info.status}>');
+    })
+</script>

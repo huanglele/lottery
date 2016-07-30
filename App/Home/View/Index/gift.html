@@ -208,11 +208,15 @@
                         alert('兑换成功');
                     }else{
                         alert(res.info);
+                    };
+                    if(typeof (res.url)!='undefined'){
+                        window.location.href = res.url;
                     }
                 },
                 'complete':function(){
                     onExchange = false;
                     $('#send-exchange').addClass('btn-success');
+                    $('#close-exchange').click();
                 }
             })
         }else{

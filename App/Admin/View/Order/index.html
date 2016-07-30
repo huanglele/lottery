@@ -56,9 +56,8 @@
                     <td><{$vo.id}></td>
                     <td><{$vo.gid}></td>
                     <td><{$vo.uid}></td>
-                    <td><{$GiftStatus[$vo['status']]}></td>
-                    <td><{$vo.left_num}></td>
-                    <td><{$vo.sold_num}></td>
+                    <td><{$OrderStatus[$vo['status']]}></td>
+                    <td><{$vo.create_time}></td>
                     <td><a href="<{:U('view')}>?id=<{$vo.id}>" >查看</a></td>
                 </tr>
             </volist>
@@ -67,3 +66,8 @@
     </div>
     <div><{$page}></div>
 </div>
+<script>
+    $(window).ready(function(){
+        $('select[name="status"]').val('<{$status}>');
+    })
+</script>
