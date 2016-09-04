@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 112.5px;">
+<head>
+    <meta charset="UTF8">
+    <link rel="dns-prefetch" href="//static.gtimg.com">
+    <title>双色球</title>
+    <link href="__PUBLIC__/css/global.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/css/doublecolorball.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="telephone=no" name="format-detection">
+    <script src="__PUBLIC__/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="etDiv">
+    <!--手Q专用透明遮罩层-->
+    <div id="loading3" class="cpm-loading-mod" style="display: none;">
+        <div class="cpm-mask" style="background:rgba(0,0,0,0);"></div>
+    </div>
+    <!--手Q微信公用Bubble Dom-->
+    <div class="cpm-bubble-mod" id="bubble-box" style="display:none;">
+        <div class="cpm-bubble">
+            <i class="i-bubble"></i>
+            <span id="bubble"></span>
+        </div>
+    </div>
+    <!--手Q微信公用loading Dom-->
+    <div class="m-loading-mod" id="loading2" style="display: none;">
+        <div class="m-loading">
+            <i class="i-loading"></i>
+            <p>正在加载...</p>
+        </div>
+    </div>
+    <!--手Q微信公用share Dom-->
+    <div class="m-share-sns cpm-hide" id="sharebox">
+        <div class="m-share-tips"></div>
+    </div>
+    <section id="businessContent">
+        <div id="c_lg.point.szc_chooseJson">
+            <div id="sz_choose_page">
+                <div class="ssq" id="box_content">
+                    <div class="page_head">
+                        <img src="__PUBLIC__/images/doublecolorball.png" class="page_head__img">
+                        <p class="page_head__info">立即投注玩猜大小开宝箱</p>
+                        <div class="cpm-note-info">
+                            <div class="layout-m">
+                                <div id="issue_Info">
+                        <span class="meta">
+                          <em class="hl_txt">16103</em>期</span>
+                                    <span class="meta">
+                          <em class="hl_txt">周日 21:15</em>开奖</span></div>
+                                <div class="addicted-notice cpm-hide" id="addicted_notice">
+                                    <i class="cpm-icon cpm-icon-clock"></i>
+                                    <span class="cpm-red">适当游戏益脑，沉迷游戏伤身</span></div>
+                            </div>
+                            <!--<div class="layout-r">-->
+                            <!---->
+                            <!--<button class="btn_bets" data-pe="tap:_view.gourl" data-url="/m_qq/active/lg.point.html?isdb=1#record=list&from=ssq">投注记录</button>-->
+                            <!---->
+                            <!--</div>--></div>
+                    </div>
+                    <div class="page_cont">
+                        <i class="i_shake"></i>
+                        <div class="cpm-recent-history" id="box_history">
+                            <ul class="history_list" id="list_award"></ul>
+                            <div class="cpm-drag-load" id="loading">
+                                <i class="i"></i>正在刷新...
+                            </div>
+                        </div>
+                        <div class="bets_choose">
+                            <div class="history_handle__note" id="box_bonusPool">
+                                <i class="cpm-icon cpm-icon-msg"></i>
+                                <span id="txt_bonusQihao">16103</span>期 奖池滚存：
+                                <span class="cpm-red" id="txt_bonusJindou">4,314,229,900</span>金豆
+                                <i class="cpm-icon cpm-arrow-t"></i></div>
+                            <div class="history_handle cpm-hide" id="box_historyPool">
+                                <span id="txt_award">点击查看历史开奖</span>
+                                <i class="cpm-icon cpm-arrow-t"></i>
+                            </div>
+                            <div id="sz_choose_box">
+                                <div class="cpm-ball-list" id="sz_zzx_s">
+                      <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="01" class="ui_ball cpm-ball-red">01</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="02" class="ui_ball cpm-ball-red">02</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="03" class="ui_ball cpm-ball-red">03</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="04" class="ui_ball cpm-ball-red">04</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="05" class="ui_ball cpm-ball-red">05</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="06" class="ui_ball cpm-ball-red">06</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="07" class="ui_ball cpm-ball-red">07</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="08" class="ui_ball cpm-ball-red">08</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="09" class="ui_ball cpm-ball-red">09</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="10" class="ui_ball cpm-ball-red">10</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="11" class="ui_ball cpm-ball-red">11</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="12" class="ui_ball cpm-ball-red">12</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="13" class="ui_ball cpm-ball-red">13</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="14" class="ui_ball cpm-ball-red">14</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="15" class="ui_ball cpm-ball-red">15</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="16" class="ui_ball cpm-ball-red">16</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="17" class="ui_ball cpm-ball-red">17</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="18" class="ui_ball cpm-ball-red">18</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="19" class="ui_ball cpm-ball-red">19</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="20" class="ui_ball cpm-ball-red">20</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="21" class="ui_ball cpm-ball-red">21</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="22" class="ui_ball cpm-ball-red">22</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="23" class="ui_ball cpm-ball-red">23</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="24" class="ui_ball cpm-ball-red">24</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="25" class="ui_ball cpm-ball-red">25</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="26" class="ui_ball cpm-ball-red">26</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="27" class="ui_ball cpm-ball-red">27</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="28" class="ui_ball cpm-ball-red">28</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="29" class="ui_ball cpm-ball-red">29</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="30" class="ui_ball cpm-ball-red">30</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="31" class="ui_ball cpm-ball-red">31</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="32" class="ui_ball cpm-ball-red">32</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="s" at="chooseNum" n="33" class="ui_ball cpm-ball-red">33</b></span>
+                                </div>
+                                <div class="cpm-ball-list" id="sz_zzx_g">
+                      <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="01" class="ui_ball cpm-ball-blue">01</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="02" class="ui_ball cpm-ball-blue">02</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="03" class="ui_ball cpm-ball-blue">03</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="04" class="ui_ball cpm-ball-blue">04</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="05" class="ui_ball cpm-ball-blue">05</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="06" class="ui_ball cpm-ball-blue">06</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="07" class="ui_ball cpm-ball-blue">07</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="08" class="ui_ball cpm-ball-blue">08</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="09" class="ui_ball cpm-ball-blue">09</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="10" class="ui_ball cpm-ball-blue">10</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="11" class="ui_ball cpm-ball-blue">11</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="12" class="ui_ball cpm-ball-blue">12</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="13" class="ui_ball cpm-ball-blue">13</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="14" class="ui_ball cpm-ball-blue">14</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="15" class="ui_ball cpm-ball-blue">15</b></span>
+                                    <span class="cpm-ball-wrap">
+                        <b w="g" at="chooseNum" n="16" class="ui_ball cpm-ball-blue">16</b></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i-linkto i-linkto__ssq">
+                        <i class="i-linkto-icon" data-pe="tap:_lg.point.showDrop" dom="drop_menu_list"></i>
+                        <div class="i-linkto_detail" id="drop_menu_list" style="display: none;">
+                            <ul class="i-linkto_detail_list">
+                                <li data-pe="tap:view.gohash" data-hash="lg.point.rule=init&amp;lotteryId=ssq">活动规则</li>
+                                <li data-pe="tap:_view.gourl"
+                                    data-url="/m_qq/active/lg.point.html?isdb=1#record=list&amp;from=ssq">投注记录
+                                </li>
+                                <li data-pe="tap:_lg.point.follow.dialog">去关注</li>
+                                <li data-pe="tap:_view.goIndex" data-parame="vb2ctag=4_2013_1_3908">回到大厅</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="recommendDiv"></div>
+                </div>
+            </div>
+            <div id="sz_sure_page" class="cpm-hide page_order">
+                <div class="cpm-bets-orders">
+                    <div class="cpm-btn-group">
+                        <a href="javascript:void(0);" id="addSelf"
+                           class="cpm-btn cpm-btn-default">
+                            <i class="cpm-icon cpm-icon-plus"></i>自选号码</a>
+                        <a href="javascript:void(0);" id="addRandomOnSure"
+                           class="cpm-btn cpm-btn-default">
+                            <i class="cpm-icon cpm-icon-plus"></i>机选一注</a>
+                    </div>
+                    <div id="sz_ulbox">
+                        <div>
+                            <ul class="cpm-list cpm-bets-list" id="sz_ul"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="cpm-fixed cpm-fixed-b" id="footer">
+        <div class="cpm-bets-toolbar" id="choose_footer">
+            <div class="cpm-fixed cpm-fixed-b">
+                <div class="cpm-bets-toolbar">
+                    <div class="bd">
+                        <div class="cpm-btn-group">
+                            <button href="javascript:void(0);" id="addRandomOnChoose" class="cpm-btn cpm-btn-random">随机一注
+                            </button>
+                            <a href="javascript:void(0);" class="cpm-btn cpm-btn-large cpm-btn-primary" data-check="0"
+                               id="showtip">至少选择6个红球+1个蓝球</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cpm-bets-toolbar cpm-hide" id="sure_footer">
+            <div class="info">
+                <p class="desc"><i id="total_group_num"></i></p>
+                <p class="desc" id="txt_jifen">我的金豆：
+                    <span class="amounts" id="txt_myJf" data-lotterycard="0"><{$Think.session.coin}></span></p>
+            </div>
+            <!--[[追号-->
+            <div class="cpm-btn-group js-lotterycard">
+                <a href="javascript:void(0);" id="buyNow" data-check="0" class="cpm-btn cpm-btn-large cpm-btn-primary">立即投注 &nbsp;&nbsp;<span id="sure_money"></span>金豆</a></div>
+            <label class="cpm-agree-rule cpm-hide js-lotterycard" id="agree">
+                <input type="checkbox" value="1" class="cpm-checkbox" checked="checked" name="agree" id="rule_agree">我已阅读并同意《
+                <a href="/m/user/lotterycard_userpact.shtml">用户守则</a>》
+            </label>
+        </div>
+    </div>
+
+    <div id="showMaskTip" class="cpm-dialog-mod dialog-pop cpm-hide">
+        <div class="cpm-mask"></div>
+        <div class="cpm-dialog cpm-dialog-info">
+            <div class="dialog-bd">
+                <div class="cpm-status-info"></div>
+            </div>
+            <div class="dialog-ft"><!-- 这里是模块底部，默认是放按钮的 -->
+                <div class="btn-group">
+                    <a href="javascript:void(0);" class="btn btn-confirm">知道了</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var redBallBox = $('#sz_zzx_s');
+    var buleBallBox = $('#sz_zzx_g');
+    leftCoinNum = '<{$Think.session.coin}>';
+    current_time = '<{$current_time}>';
+    var data = new Array();
+    $(window).ready(function () {
+
+    })
+
+    //点击球,切换选中状态
+    $('.ui_ball ').click(function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        } else {
+            $(this).addClass('active');
+        }
+        checkFormat();
+    });
+
+    //检测是否符合一注要求
+    checkFormat = function () {
+        var showTip = $('#showtip');
+        var red = $('.active', redBallBox).length;
+        var blue = $('.active', buleBallBox).length;
+        if (red > 5 && blue > 0) {
+            var num = factorial(red) / 720 / factorial(red - 6) * blue;
+            showTip.html('共' + num + '注，下一步').attr('data-check', 1)
+        } else {
+            showTip.html('至少选择6个红球+1个蓝球').attr('data-check', 0);
+        }
+    }
+
+
+    // 阶乘函数
+    function factorial(n) {
+        return ( n <= 1 ) ? 1 : n * factorial(n - 1);
+    }
+
+    //点击下注
+    $('#showtip').click(function () {
+        if ($(this).attr('data-check') != 1) {
+            return false;
+        } else {
+            var t = new Object();
+            var red = Array();
+            $('.active', redBallBox).each(function (n, e) {
+                red.push($(this).attr('n'));
+            })
+            var blue = Array();
+            $('.active', buleBallBox).each(function (n, e) {
+                blue.push($(this).attr('n'));
+            })
+            t.red = red;
+            t.blue = blue;
+            data.push(t);
+            $(this).attr('data-check', 0);
+            $('.ui_ball.active').removeClass('active');
+            showSurePage();
+        }
+    })
+
+    //显示提交下注页面
+    showSurePage = function () {
+        //隐藏 选球页面
+        $('#sz_choose_page').addClass('cpm-hide');
+        $('#choose_footer').addClass('cpm-hide');
+        $('#sz_sure_page').removeClass('cpm-hide');
+        $('#sure_footer').removeClass('cpm-hide');
+        //生成列表
+        createUl();
+    }
+
+    //根据data里面的数据生成ul
+    createUl = function () {
+        setCost();
+        var sz_ul = '';
+        $(data).each(function (i,e) {
+            var red = '';
+            $(e.red).each(function (j,k) {
+                red += k+ ' ';
+            })
+            var blue = '';
+            $(e.blue).each(function (j,k) {
+                blue += k+ ' ';
+            })
+            sz_ul += '<li><span class="cpm-red">'+red+'</span><span class="cpm-blue">'+blue+'</span><a onclick="deleteOne('+i+')" class="cpm-icon-delete"></a></li>';
+        })
+        $('#sz_ul').html(sz_ul);
+    }
+
+    //删除一注
+    deleteOne = function (i) {
+        data.splice(i,1);
+        createUl();
+    }
+
+    //点击自选号码
+    $('#addSelf').click(function () {
+        $('#sz_choose_page').removeClass('cpm-hide');
+        $('#choose_footer').removeClass('cpm-hide');
+        $('#sz_sure_page').addClass('cpm-hide');
+        $('#sure_footer').addClass('cpm-hide');
+    })
+
+    //投注页面点击随机生成一注
+    $('#addRandomOnSure').click(function () {
+        data.push(setRandom());
+        createUl();
+    })
+
+    //在选择页面点击随机生成一注
+    $('#addRandomOnChoose').click(function () {
+        var t = setRandom();
+        $('.ui_ball.active').removeClass('active');
+        var redUl = $('#sz_zzx_s');
+        $(t.red).each(function (i, e) {
+            $('.ui_ball',redUl).eq(e-1).addClass('active');
+        })
+        var blueUl = $('#sz_zzx_g');
+        $(t.blue).each(function (i, e) {
+            $('.ui_ball',blueUl).eq(e-1).addClass('active');
+        })
+        checkFormat();
+    })
+
+    //生成随机选择一注的数据
+    setRandom = function () {
+        var t = new Object();
+        var redArr = ['01','02','03','04','05','06','07','08','09',10,11,12,13,14,15,16,
+                17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33];
+        var blueArr = ['01','02','03','04','05','06','07','08','09',10,11,12,13,14,15,16];
+        var red = [];
+        var blue = [];
+        var i = 0;
+        for(i; i<6; i++){
+            var count = 33 - i;
+            var index = Math.floor(Math.random()*100)%count;
+            log(redArr[index]);
+            red.push(redArr[index]);
+            redArr.splice(index,1);
+        }
+        red.sort();
+        blue.push(blueArr[Math.floor(Math.random()*100)%16]);
+        t.red = red;
+        t.blue = blue;
+        return t;
+    }
+
+    //计算一组有多少注
+    countOneGroupNum = function (obj) {
+        var red = obj.red.length;
+        var blue = obj.blue.length;
+        return factorial(red) / 720 / factorial(red - 6) * blue;
+    }
+
+    //计算总花费
+    setCost = function () {
+        var num = 0;
+        if(data.length){
+            $(data).each(function (i,e) {
+                num += countOneGroupNum(e);
+            })
+            $('#total_group_num').html('共'+num+'注');
+            var needCoin = num*200;
+            if(leftCoinNum < needCoin){
+                //金币不足
+                var check = 0;
+            }else {
+                var check = 1;
+            }
+            $('#buyNow').attr('data-check',check);
+            $('#sure_money').html(needCoin);
+        }else {
+            //没有选择任何一注
+            $('#addSelf').click();
+            return false;
+        }
+    }
+
+    //发送投注
+    $('#buyNow').click(function () {
+        if($(this).attr('data-check')){
+            $.ajax({
+
+            })
+        }else {
+            showMaskTip('你的金币不足');
+        }
+    })
+
+    //显示提示
+    showMaskTip = function (tip) {
+        var mask = $('showMaskTip');
+        $('.cpm-status-info',mask).html(tip);
+        mask.removeClass('cpm-hide');
+    }
+    
+    log = function (s) {
+        console.log(s);
+    }
+
+</script>
+</body>
+</html>
