@@ -259,7 +259,7 @@
             </div>
             <div class="dialog-ft"><!-- 这里是模块底部，默认是放按钮的 -->
                 <div class="btn-group">
-                    <a href="javascript:void(0);" class="btn btn-confirm">知道了</a>
+                    <a href="<{:U(index)}>" class="btn btn-confirm">知道了</a>
                 </div>
             </div>
         </div>
@@ -269,10 +269,13 @@
     var redBallBox = $('#sz_zzx_s');
     var buleBallBox = $('#sz_zzx_g');
     leftCoinNum = '<{$Think.session.coin}>';
-    current_time = '<{$current_time}>';
+    current_times = '<{$current_times}>';
     var data = new Array();
+    var drop_menu_list = $('#drop_menu_list');
     $(window).ready(function () {
-
+        $('[dom="drop_menu_list"]').click(function () {
+            drop_menu_list.toggle();
+        })
     })
 
     //点击球,切换选中状态
@@ -449,7 +452,16 @@
     $('#buyNow').click(function () {
         if($(this).attr('data-check')){
             $.ajax({
+                'url':"<{:U('buy')}>",
+                'data':{
+                    'options':data,
+                    'times':current_times
+                },
+                'type':'POST',
+                'success':function (res) {
+                    showMaskTip(res.info);
 
+                }
             })
         }else {
             showMaskTip('你的金币不足');
@@ -458,7 +470,7 @@
 
     //显示提示
     showMaskTip = function (tip) {
-        var mask = $('showMaskTip');
+        var mask = $('#showMaskTip');
         $('.cpm-status-info',mask).html(tip);
         mask.removeClass('cpm-hide');
     }

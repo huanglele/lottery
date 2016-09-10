@@ -123,3 +123,28 @@ function msubstr($str, $start = 0, $length, $charset = "utf-8", $suffix = true)
     if ($suffix) return $slice . "…";
     return $slice;
 }
+
+/**
+ * 计算当前实际应该是多少期
+ * @return int
+ */
+function countCorrectTimes(){
+    if(isset($this->CorrectTimes)){
+        return $this->CorrectTimes;
+    }else {
+        $t = date('y,W,w,H,i'); //两位年数，第几周，星期中的第几天0（表示星期天）到 6（表示星期六），
+        list($year, $week, $day, $hour, $min) = explode(',', $t);
+        $i = ($day * 24 + $hour) * 60 + $min;
+        $times = $year * 1000 + $week * 3 - 3;
+        //17:25->1165  21:15->1275  24:00->1440
+        if ($i < 2605) {
+            //还在星期日的那一期
+        } else if ($i > 2715 && $i < 5485) {
+            //星期二 - 星期四
+            $times++;
+        } else if ($i > 5595 && $i < 9805) {
+            $times += 2;
+        }
+        return $times - 1;
+    }
+}

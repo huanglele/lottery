@@ -25,7 +25,8 @@ class DoubleColorBallController extends CommonController
      */
     public function index()
     {
-        $current_time = $this->model->getCurrentTimesInfo();
+        $current_times = $this->model->countCorrectTimes();
+        $this->assign('current_times',$current_times);
         $this->display('index');
     }
 
@@ -42,7 +43,18 @@ class DoubleColorBallController extends CommonController
      */
     public function buy()
     {
-
+        $status =0;
+        $times = I('post.times');
+        $options = I('post.options');
+        $info = $this->model->buy($options,$times);
+        if($info===true){
+            $info = '购买成功';
+            $status = 1;
+            $ret['coin'] = session('coin');
+        }
+        $ret['info'] = $info;
+        $ret['status'] = $status;
+        $this->ajaxReturn($ret);
     }
 
     /**
@@ -50,7 +62,7 @@ class DoubleColorBallController extends CommonController
      */
     public function help()
     {
-
+        $this->display('help');
     }
 
 }
