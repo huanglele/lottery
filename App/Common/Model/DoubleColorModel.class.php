@@ -153,9 +153,24 @@ class DoubleColorModel extends Model
         return ( $n <= 1 ) ? 1 : $n * $this->factorial($n - 1);
     }
 
-    //
+    //获取开奖时间
     public function getLotteryTime(){
         
+    }
+
+    public function scratchLottery(){
+
+    }
+
+    //计算一组开奖
+    private function scratch($option,$result){
+        $rules = C('DoubleColorRule');
+        $red = $option['red'];
+        $blue = $option['blue'];
+        $coin = 0;
+        foreach ($rules as $rule){
+
+        }
     }
 
 }

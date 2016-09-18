@@ -82,4 +82,5 @@ class CheckDoubleColorBehavior extends Behavior
 
 
 
+
 }

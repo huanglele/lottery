@@ -138,4 +138,18 @@ return array(
         '2' => '已发货',
     ),
 
+    //双色球开奖规则
+    'DoubleColorRule' => array(
+        array('red'=>'0','blue'=>'1','level_name'=>'六等奖','level'=>'6','rate'=>'1000'),
+        array('red'=>'1','blue'=>'1','level_name'=>'六等奖','level'=>'6','rate'=>'1000'),
+        array('red'=>'2','blue'=>'1','level_name'=>'六等奖','level'=>'6','rate'=>'1000'),
+        array('red'=>'4','blue'=>'0','level_name'=>'五等奖','level'=>'5','rate'=>'3000'),
+        array('red'=>'3','blue'=>'1','level_name'=>'五等奖','level'=>'5','rate'=>'3000'),
+        array('red'=>'5','blue'=>'0','level_name'=>'四等奖','level'=>'4','rate'=>'5000'),
+        array('red'=>'4','blue'=>'1','level_name'=>'四等奖','level'=>'4','rate'=>'5000'),
+        array('red'=>'5','blue'=>'1','level_name'=>'三等奖','level'=>'3','rate'=>'500000'),
+        array('red'=>'6','blue'=>'0','level_name'=>'二等奖','level'=>'2','rate'=>'0.25'),
+        array('red'=>'6','blue'=>'1','level_name'=>'一等奖','level'=>'1','rate'=>'0.75'),
+    ),
+
 );
