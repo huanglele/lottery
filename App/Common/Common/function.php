@@ -148,3 +148,26 @@ function countCorrectTimes(){
         return $times - 1;
     }
 }
+
+/**
+ * 阶乘函数
+ * @param $n
+ * @return int
+ */
+function factorial($n) {
+    return ( $n <= 1 ) ? 1 : $n * $this->factorial($n - 1);
+}
+
+/**
+ * 组合计算
+ * @param int $n 组合下标
+ * @param int $m 组合上标
+ * @return float|int
+ */
+function combination($n,$m){
+    if($n<$m){
+        return 0;
+    }else {
+        return factorial($n) / factorial($m) / factorial($n - $m);
+    }
+}

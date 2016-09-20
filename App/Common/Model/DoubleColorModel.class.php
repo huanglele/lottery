@@ -110,7 +110,7 @@ class DoubleColorModel extends Model
         foreach ($options as $option){
             $red = $option['red'];
             $blue = $option['blue'];
-            $num = $this->factorial(count($red)) / 720 / $this->factorial(count($red)-6) * count($blue);
+            $num = factorial(count($red)) / 720 / factorial(count($red)-6) * count($blue);
             if($num) {
                 $t['cost'] = $num * 200;
                 $need_coin += $t['cost'];
@@ -158,19 +158,128 @@ class DoubleColorModel extends Model
         
     }
 
-    public function scratchLottery(){
+    /**
+     * 开奖
+     */
+    public function lottery(){
+        set_time_limit(0);
+        ignore_user_abort(true);
+
+        $last_time = S('lastLotteryHandleTime',NOW_TIME);   //上次执行开奖时间
+        $last_time = $last_time ? : 0;
+        $interval_time = NOW_TIME - $last_time;
+        $set_time = C('DoubleColorHandleIntervalTime');
+        if(($interval_time - $set_time)>0){
+            S('lastLotteryHandleTime',NOW_TIME);
+            //查找可以开奖的但是没有开奖的
+            $unlottery_times_arr = $this->where(array('status'=>2))->field('times,result')->select();
+            if($unlottery_times_arr && count($unlottery_times_arr)){
+                foreach ($unlottery_times_arr as $t){
+                    $this->scratchLottery($t['times'],json_decode($t['result'],true));
+                }
+            }
+        }
 
     }
 
-    //计算一组开奖
-    private function scratch($option,$result){
+    /**
+     * 为某一期开奖
+     * @param int $times 期数
+     * @param array $result 中奖球结果
+     */
+    private function scratchLottery($times,$result=[]){
+        $result = $result ? $result : $this->getResult($times);
+        if($result && count($result)){
+            $map['times'] = $times;
+            $map['status'] = 1;
+            $r_db = M('double_color_record');
+            $records = $r_db->where($map)->limit(50)->field('id,uid,option');
+            while ($records){
+                foreach ($records as $record){
+                    $option = json_decode($record['option'],true);
+                    $reward = $this->countOneRecord($option,$result);
+                    $t = $record['id'];
+                    $t['reward'] = $reward;
+                    if($reward){
+                        M('user')->where(array('id'=>$record['uid']))->setInc('coin',$reward);
+                        $coin['uid'] = $record['uid'];
+                        $coin['amount'] = $reward;
+                        $coin['type'] = 2;
+                        $coin['time'] = time();
+                        $coin['note'] = $times.'期双色球中奖,下注'.$option;
+                        M('coin')->add($coin);
+                        $t['status'] = 3;
+                    }else{
+                        $t['status'] = 2;
+                    }
+                    $r_db->save($t);
+                }
+                $records = $r_db->where($map)->limit(50)->field('id,uid,option');
+            }
+
+            //再次确认没有被处理的记录
+            $r = $r_db->where(array('status'=>array('neq',1)))->count('id');
+            if($r===0){
+                $this->where(array('times'=>$times))->setField('status',3);
+            }
+        }
+    }
+
+
+    /**
+     * 获取某一期的结果
+     * @param $times
+     * @return mixed
+     */
+    private function getResult($times){
+        static $resultsArr = array();
+        if(key_exists($times,$resultsArr)){
+            return $resultsArr[$times];
+        }else{
+            $r = $this->where(array('times'=>$times))->getField('result');
+            if($r){
+                $resultsArr[$times] = json_decode($r);
+                return $resultsArr[$times];
+            }else{
+                return $r;
+            }
+        }
+    }
+
+    /**
+     * 计算一组下注结果
+     * @param array $option 下注
+     * @param array $result 结果
+     * @return int
+     */
+    private function countOneRecord($option,$result){
         $rules = C('DoubleColorRule');
         $red = $option['red'];
         $blue = $option['blue'];
+        $red_all_num = count($red);     //购买的红色球数量
+        $red_in_num = count(array_intersect($red,$result['red']));  //猜中的红球数量
+        $red_no_num = $red_all_num - $red_in_num;
+        $blue_all_num = count($blue);   //购买的蓝色球数量
+        $blue_in_num = count(array_intersect($blue,$result['blue']));
+        $blue_on_num = $blue_all_num - $blue_in_num;
+
         $coin = 0;
         foreach ($rules as $rule){
-
+            $red_need_num = $rule['red'];
+            $blue_need_num = $rule['blue'];
+            //一共有多少种组合 剩下没有猜对的红色球的组合数*猜对的红色球的组合数*蓝色球的组合数
+            if($blue_need_num){
+                //需要蓝色球
+                $r = $blue_in_num ? combination($red_no_num,$red_no_num-$red_need_num) * combination($red_in_num,$red_need_num) * $blue_in_num : 0;
+            }else{
+                //不需要蓝色球
+                $r = $blue_on_num ? combination($red_no_num,$red_no_num-$red_need_num) * combination($red_in_num,$red_need_num) * $blue_on_num : 0;
+            }
+            if($r){
+                $coin += $rule['reward'];
+            }
         }
+        return $coin;
     }
 
 }
